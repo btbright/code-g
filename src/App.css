@@ -1,0 +1,59 @@
+.container {
+	max-width: 1080px;
+	min-width: 800px;
+	min-height: 600px;
+	margin: 100px auto 0;
+	border: 1px solid #eee;
+	display: flex;
+	justify-content: center;
+}
+
+.step {
+	width: 100%;
+	max-width: 80%;
+	margin-top:100px;
+}
+
+.animate-opacity {
+	transition: opacity .2s;
+}
+
+.residence-confirmation {
+	z-index: -1;
+	margin-left:10px;
+	position: absolute;
+	left: 0;
+	top:0;
+}
+
+.month-label label {
+	margin-bottom: 0;
+	font-weight: normal;
+	font-size: 0.8em;
+}
+
+.month-checkbox {
+	display: flex;
+	height: 20px;
+	width: 20px;
+	align-items: center;
+	justify-content: center;
+}
+
+.month-checkbox input {
+	margin-bottom: 0;
+}
+
+.state-select {
+	margin-bottom: 0;
+}
+
+.reset-link {
+	font-size: 0.7em;
+	color: #888;
+	cursor: pointer;
+}
+
+.reset-link:hover {
+	color: #999;
+}
