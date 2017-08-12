@@ -1,0 +1,10 @@
+.reset-link {
+	font-size: 0.7em;
+	font-weight: normal;
+	color: #888;
+	cursor: pointer;
+}
+
+.reset-link:hover {
+	color: #999;
+}

@@ -1,18 +1,18 @@
 import * as types from "../actions/action-types";
 import { difference, union } from "lodash";
+import taxpayerReturnFields from "../constants/taxpayerReturnFields";
 
 const initialState = {
-  taxYear: undefined,
+  taxYear: "",
   residenceHistory: [],
-  AGI: undefined,
-  taxExemptInterest: undefined,
-  foreignEarnedIncome: undefined,
-  socialSecurityBenefitsTotal: undefined,
-  socialSecurityBenefitsTaxable: undefined,
-  dependentsAGI: undefined,
-  dependentsSocialSecurityBenefitsTotal: undefined,
-  dependentsSocialSecurityBenefitsTaxable: undefined,
-  householdTotal: undefined
+  AGI: "",
+  taxExemptInterest: "",
+  foreignEarnedIncome: "",
+  socialSecurityBenefitsTotal: "",
+  socialSecurityBenefitsTaxable: "",
+  isClaimingDependents: undefined,
+  dependents: [],
+  numberOfPeopleInTaxHousehold: ""
 };
 
 export default (state = initialState, action) => {
@@ -21,14 +21,33 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { residenceHistory: [] });
     case types.RESIDENCE_HISTORY_STATE_SELECT:
     case types.RESIDENCE_HISTORY_STATE_MONTH_SELECT:
+    case types.CONFIRM_SINGLE_STATE:
       return Object.assign(
         {},
         state,
         { residenceHistory: residenceHistory(state.residenceHistory, action) }
       );
+    case types.UPDATE_DEPENDENT_FIELD:
+      const dependentToUpdate = state.dependents[action.index];
+      const newDependents = [
+        ...state.dependents.slice(0, action.index),
+        Object.assign({}, dependentToUpdate, {[action.fieldName]: action.fieldValue}),
+        ...state.dependents.slice(action.index + 1, state.dependents.length)
+      ]
+      return Object.assign({}, state, {dependents: newDependents})
+    case types.ADD_DEPENDENT:
+      return Object.assign({}, state, {dependents: [...state.dependents, {}]})
+    case types.REMOVE_DEPENDENT:
+      return Object.assign({}, state, {dependents: [
+        ...state.dependents.slice(0, action.index),
+        ...state.dependents.slice(action.index + 1, state.dependents.length)
+      ]})
     case types.UPDATE_TAXPAYER_RETURN_FIELD:
-      //TODO - validate field name
-      return Object.assign({}, state, { [action.fieldName]: action.fieldValue });
+      let newState = state
+      if (action.fieldName === taxpayerReturnFields.isClaimingDependents){
+        newState = Object.assign({}, newState, {dependents: [{}]})
+      }
+      return Object.assign({}, newState, { [action.fieldName]: action.fieldValue });
     default:
       return state;
   }
@@ -36,6 +55,10 @@ export default (state = initialState, action) => {
 
 function residenceHistory(state = [], action) {
   switch (action.type) {
+    case types.CONFIRM_SINGLE_STATE:
+      if (!action.isConfirmedSingleState) return state;
+      const singleStateObj = state[0];
+      return [Object.assign({}, singleStateObj, {months: [1,2,3,4,5,6,7,8,9,10,11,12]})];
     case types.RESIDENCE_HISTORY_STATE_SELECT:
       const stateObj = state[action.index]
       //don't reset state if it already exists

@@ -1,6 +1,7 @@
 import React from "react";
 import months from "../constants/months";
 import { times } from "lodash";
+import '../styles/MonthSelectionForm.css';
 
 export default props =>
   <div>
@@ -24,6 +25,7 @@ export default props =>
             <input
               id={`${props.id}-${i}`}
               type="checkbox"
+              readOnly
               checked={props.months.indexOf(i + 1) !== -1}
             />
           </div>

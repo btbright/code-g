@@ -7,6 +7,15 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+		case types.UPDATE_STEP:
+			let step = state.step;
+			if (typeof action.increment !== "undefined"){
+				step = state.step + action.increment;
+			}
+			if (typeof action.step !== "undefined"){
+				step = action.step;
+			}
+			return Object.assign({}, state, {step})
     case types.CONFIRM_SINGLE_STATE:
       return Object.assign({}, state, { isConfirmedSingleState: action.isConfirmedSingleState });
 		case types.RESET_RESIDENCE_HISTORY:

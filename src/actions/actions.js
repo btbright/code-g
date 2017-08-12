@@ -8,6 +8,28 @@ export function updateTaxpayerReturnField(fieldName, fieldValue){
 	}
 }
 
+export function updateDependentField(index, fieldName, fieldValue){
+	return {
+		type: types.UPDATE_DEPENDENT_FIELD,
+		index,
+		fieldName,
+		fieldValue
+	}
+}
+
+export function addDependent(){
+	return {
+		type: types.ADD_DEPENDENT
+	}
+}
+
+export function removeDependent(index){
+	return {
+		type: types.REMOVE_DEPENDENT,
+		index
+	}
+}
+
 export function selectState(stateAbbreviation, index){
 	return {
 		type: types.RESIDENCE_HISTORY_STATE_SELECT,

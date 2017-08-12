@@ -5,7 +5,6 @@ export default {
 	foreignEarnedIncome: 'foreignEarnedIncome',
 	socialSecurityBenefitsTotal: 'socialSecurityBenefitsTotal',
 	socialSecurityBenefitsTaxable: 'socialSecurityBenefitsTaxable',
-	dependentsAGI: 'dependentsAGI',
-	dependentsSocialSecurityBenefitsTotal: 'dependentsSocialSecurityBenefitsTotal',
-	dependentsSocialSecurityBenefitsTaxable: 'dependentsSocialSecurityBenefitsTaxable'
+	isClaimingDependents: 'isClaimingDependents',
+	numberOfPeopleInTaxHousehold: 'numberOfPeopleInTaxHousehold'
 }

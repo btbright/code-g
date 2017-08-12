@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import StateSelect from "./StateSelect.jsx";
 import MonthSelectionForm from "./MonthSelectionForm.jsx";
 import states from "../constants/states";
+import '../styles/StateResidenceForm.css'
 
 export default class StateResidenceForm extends Component {
   handleConfirmationClick = isConfirmed => e => {
@@ -10,7 +11,6 @@ export default class StateResidenceForm extends Component {
   }
   render() {
     const shouldShowConfirmation = this.props.shouldPromptConfirmation;
-    console.log(`this.props.selectedStateAbbreviation: '${this.props.selectedStateAbbreviation}'`, )
     return (
       <div className="row">
         <div className="three columns">
@@ -45,14 +45,14 @@ export default class StateResidenceForm extends Component {
               Did you live in {states[this.props.selectedStateAbbreviation]} all year?
               <a
                 onClick={this.handleConfirmationClick(true)}
-                className="button"
+                className="button confirmation-option"
                 href="#yes"
               >
                 Yes
               </a>
               <a
-                onClick={this.handleConfirmationClick(true)}
-                className="button"
+                onClick={this.handleConfirmationClick(false)}
+                className="button confirmation-option"
                 href="#no"
               >
                 No

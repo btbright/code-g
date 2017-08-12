@@ -1,0 +1,21 @@
+.button-disabled {
+	background-color: #eeeeee !important;
+	pointer-events: none !important;
+	cursor: default !important;
+	border-color: #eeeeee !important;
+	color: #cccccc !important;
+}
+
+.button-primary:hover {
+	color: #FFF  !important;
+  background-color: #38d0ff !important;
+  border-color: #38d0ff !important;
+}
+
+.button-hidden {
+	opacity: 0;
+}
+
+.button {
+	transition: background-color .1s, color .1s, border-color .1s, opacity .1s;
+}

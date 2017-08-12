@@ -1,6 +1,7 @@
 import React from "react";
-import states from "../constants/states";
+import states from "../constants/states"
 import { difference } from 'lodash'
+import '../styles/StateSelect.css'
 
 export default props =>
   <select
