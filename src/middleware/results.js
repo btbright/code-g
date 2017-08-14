@@ -8,9 +8,24 @@ export default store => next => action => {
 		if (isStateDisqualification(state.taxpayerReturn.residenceHistory, action.isConfirmedSingleState)){
 			store.dispatch({
 				type: types.UPDATE_RESULT,
-				result: 'stateDisqualification'
+				result: {
+					type: 'stateDisqualification'
+				}
 			})
 			return
+		}
+	}
+
+	if (action.type === types.UPDATE_STEP){
+		if (state.ui.invalidFields.length === 0){
+			const result = getCalculatedQualificationResult(state.taxpayerReturn)
+			if (result){
+				store.dispatch({
+					type: types.UPDATE_RESULT,
+					result: Object.assign({type: 'calculatedQualification'}, result)
+				})
+				return
+			}
 		}
 	}
 
@@ -29,8 +44,14 @@ export function isStateDisqualification(residenceHistory, isConfirmedSingleState
   const selectedStates = residenceHistory
     .filter(state => (state.months.length !== 0 || isConfirmedSingleState))
     .map(state => state.stateAbbreviation);
+
   const invalidSelectedStates = selectedStates.filter(
     state => statesThatDidNotExpandMedicare.indexOf(state) === -1
   );
-  return selectedStates.length === invalidSelectedStates.length;
+  return selectedStates.length !== 0 && selectedStates.length === invalidSelectedStates.length;
+}
+
+export function getCalculatedQualificationResult(taxpayerReturn) {
+	//if (!isTaxpayerReturnComplete(taxpayerReturn)) return false;
+	return false;
 }

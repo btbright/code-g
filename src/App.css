@@ -34,6 +34,9 @@ nav {
 	max-width: 80%;
 	width:100%;
 	bottom:0px;
+	display: flex;
+	justify-content: space-between;
+  align-items: center;
 }
 
 .confirmation-option {
@@ -63,4 +66,35 @@ nav {
 
 .return-field label {
 	display: inline-block;
+}
+
+.nav-status {
+	display: flex;
+	align-items: center;
+}
+
+.nav-status .dot {
+	height: 20px;
+	width: 20px;
+	border-radius: 10px;
+	background: #eeeeee;
+	transition: background .1s, color .1s;
+	margin: 0 6px;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0,0,0,.3);
+  font-size: .3rem;
+	cursor: pointer;
+}
+
+.nav-status .dot:hover {
+	background: #f4f4f4;
+}
+
+.nav-status .dot.active {
+	cursor: default;
+	pointer-events: none;
+	background: #33C3F0;
+	color: rgba(255,255,255,.7);
 }

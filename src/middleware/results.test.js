@@ -22,5 +22,9 @@ describe('results middleware', ()=>{
 		test('should be true if single expansion state is selected and is single state confirmed', () => {
 			expect(isStateDisqualification([{stateAbbreviation: "NY", months: []}], true)).toBe(true);
 		});
+
+		test('should be false if single expansion state is selected with no months and single state not confirmed', () => {
+			expect(isStateDisqualification([{stateAbbreviation: "NY", months: []}], false)).toBe(false);
+		});
 	})
 })

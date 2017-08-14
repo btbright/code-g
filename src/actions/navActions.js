@@ -13,3 +13,10 @@ export function previousStep(){
 		increment: -1
 	}
 }
+
+export function updateStep(step){
+	return {
+		type: types.UPDATE_STEP,
+		step
+	}
+}

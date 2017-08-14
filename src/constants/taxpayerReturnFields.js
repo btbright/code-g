@@ -17,3 +17,15 @@ export const validationRules = {
 	socialSecurityBenefitsTaxable: 'money',
 	numberOfPeopleInTaxHousehold:  'integer'
 }
+
+export const fieldTypes = {
+	taxYear: 'integer',
+	AGI: 'float',
+	taxExemptInterest: 'float',
+	foreignEarnedIncome: 'float',
+	socialSecurityBenefitsTotal: 'float',
+	socialSecurityBenefitsTaxable: 'float',
+	numberOfPeopleInTaxHousehold: 'integer'
+}
+
+export const dependentFields = ["AGI", "socialSecurityBenefitsTotal", "socialSecurityBenefitsTaxable"]
