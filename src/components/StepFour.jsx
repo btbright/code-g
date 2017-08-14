@@ -6,8 +6,8 @@ import Dependent from "./Dependent.jsx"
 
 export default class StepFour extends Component {
   render() {
-    const { updateTaxpayerReturnField, updateDependentField, addDependent } = this.props.stepActions;
-		const shouldDisplayConfirmation = typeof this.props.taxpayerReturn.isClaimingDependents === "undefined"
+    const { updateTaxpayerReturnField, updateDependentField, addDependent, removeDependent } = this.props.stepActions;
+		const shouldDisplayConfirmation = this.props.taxpayerReturn.dependents.length === 0
     return (
       <Step>
 				<div style={{display: shouldDisplayConfirmation ? "block" : "none"}}>
@@ -21,6 +21,8 @@ export default class StepFour extends Component {
 											key={i}
 											index={i}
 											dependent={dependent}
+                      onRemove={removeDependent}
+											invalidFields={this.props.ui.invalidFields}
 											onFieldUpdate={updateDependentField} />
 					})}
 					<input type="button" value="Add another dependent" onClick={addDependent} />

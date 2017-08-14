@@ -9,7 +9,12 @@ describe('taxpayerReturn actions/reducer', ()=>{
 			[taxpayerReturnFields.taxYear]: 2016
 		}
 
-		const testAction = actions.updateTaxpayerReturnField(taxpayerReturnFields.taxExemptInterest, 10)
+		const testAction = {
+			type: 'UPDATE_TAXPAYER_RETURN_FIELD',
+			fieldName: taxpayerReturnFields.taxExemptInterest,
+			fieldValue: 10
+		}
+
 		const result = taxpayerReturn(testState, testAction)
 		expect(result[taxpayerReturnFields.taxExemptInterest]).toBe(10);
 		expect(result[taxpayerReturnFields.taxYear]).toBe(2016);

@@ -10,6 +10,16 @@
 	padding-bottom: 200px;
 }
 
+.result-container {
+	max-width: 600px;
+	min-width: inherit;
+}
+
+.result-container h1 {
+	font-size: 3rem;
+	text-align: center;
+}
+
 .step {
 	width: 100%;
 	max-width: 80%;
@@ -28,4 +38,29 @@ nav {
 
 .confirmation-option {
 	margin-left: 16px;
+}
+
+.return-field {
+	position: relative;
+}
+
+.return-field.error input {
+	border-color: red;
+}
+
+.return-field .error {
+	display: inline-block;
+	color: red;
+	margin-bottom: 0;
+	margin-left: 10px;
+	transition: opacity .1s;
+	opacity: 0;
+}
+
+.return-field.error .error {
+	opacity: 1;
+}
+
+.return-field label {
+	display: inline-block;
 }

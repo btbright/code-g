@@ -19,12 +19,18 @@ import StepFive from "./components/StepFive.jsx";
 import NextStepButton from "./components/NextStepButton.jsx";
 import PrevStepButton from "./components/PrevStepButton.jsx";
 
+import StateDisqualificationResult from "./components/StateDisqualificationResult.jsx";
+
+
 const steps = [StepOne, StepTwo, StepThree, StepFour, StepFive]
 
+const results = {
+  'stateDisqualification': StateDisqualificationResult
+}
+
 class App extends Component {
-  render() {
+  renderStep = () => {
     const StepComponent = steps[this.props.ui.step-1]
-    console.log(this.props.taxpayerReturn)
     return (
       <div className="container">
         <StepComponent
@@ -40,7 +46,23 @@ class App extends Component {
             isHidden={this.props.ui.step === 1} />
         </nav>
       </div>
-    );
+    )
+  }
+  renderResult = () => {
+    const ResultComponent = results[this.props.ui.result]
+    return (
+      <div className="container result-container">
+        <ResultComponent taxpayerReturn={this.props.taxpayerReturn} />
+      </div>
+    )
+  }
+  render() {
+
+    console.log('this.props.taxpayerReturn', this.props.taxpayerReturn)
+    console.log('this.props.ui', this.props.ui)
+
+    let componentToRender = this.props.ui.result ? this.renderResult() : this.renderStep()
+    return componentToRender;
   }
 }
 

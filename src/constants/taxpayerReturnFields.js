@@ -8,3 +8,12 @@ export default {
 	isClaimingDependents: 'isClaimingDependents',
 	numberOfPeopleInTaxHousehold: 'numberOfPeopleInTaxHousehold'
 }
+
+export const validationRules = {
+	AGI: 'money',
+	taxExemptInterest: 'money',
+	foreignEarnedIncome: 'money',
+	socialSecurityBenefitsTotal: 'money',
+	socialSecurityBenefitsTaxable: 'money',
+	numberOfPeopleInTaxHousehold:  'integer'
+}

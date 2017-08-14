@@ -12,6 +12,8 @@ export default class StepFive extends Component {
           onChange={updateTaxpayerReturnField}
           fieldName={taxpayerReturnFields.numberOfPeopleInTaxHousehold}
           value={this.props.taxpayerReturn[taxpayerReturnFields.numberOfPeopleInTaxHousehold]}
+          hasError={this.props.ui.invalidFields.indexOf(taxpayerReturnFields.numberOfPeopleInTaxHousehold) !== -1}
+          errorText={"Must be a valid integer"}
           prompt="9. How many people total are in the tax household?"
           placeholder="Total people..." />
       </Step>
