@@ -1,5 +1,6 @@
 import { isTaxpayerReturnComplete, parseTaxpayerReturn, calculateModifiedAGI, getReferenceFPL, calculatePercentageOfFPL, getModifiedAGIQualificationResult } from './modifiedAGIQualification'
 import { isEqual } from 'lodash'
+import { returnTests } from './modifiedAGIQualification.test.data.js'
 
 describe('ModifiedAGIQualification logic', ()=>{
 	describe('isTaxpayerReturnComplete', ()=>{
@@ -124,6 +125,15 @@ describe('ModifiedAGIQualification logic', ()=>{
 			}
 
 			expect(getModifiedAGIQualificationResult(taxpayerReturn)).toEqual({fplPercentage: 42.19, isTaxpayerQualified: true});
+		});
+
+		test('should handle tests', () => {
+			returnTests.forEach(taxpayerReturn => {
+				const { result, ...returnTest } = taxpayerReturn;
+				const testResult = getModifiedAGIQualificationResult(returnTest)
+				const diff = getObjectDiff(result, testResult)
+				expect(diff.length).toEqual(0)
+			})
 		});
 	})
 })
