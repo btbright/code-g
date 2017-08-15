@@ -11,6 +11,8 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
+/* global selectors */
+
 export function getTaxpayerReturn(state) {
   return state.taxpayerReturn;
 }
@@ -19,12 +21,18 @@ export function getUI(state) {
   return state.ui;
 }
 
-function getSelectedStateObjects(selectedStates, transformation = x=>x){
+//utility function that filters expansion/non-expansion selected states
+//and allows for projection of the results
+function getSelectedStateObjects(state, transformation = x => x) {
+  const selectedStates = state.taxpayerReturn.residenceHistory;
+
   const nonExpansion = selectedStates.filter(
-    state => statesThatDidNotExpandMedicare.indexOf(state.stateAbbreviation) !== -1
+    state =>
+      statesThatDidNotExpandMedicare.indexOf(state.stateAbbreviation) !== -1
   );
   const expansion = selectedStates.filter(
-    state => statesThatDidNotExpandMedicare.indexOf(state.stateAbbreviation) === -1
+    state =>
+      statesThatDidNotExpandMedicare.indexOf(state.stateAbbreviation) === -1
   );
   return {
     nonExpansion: transformation(nonExpansion),
@@ -32,14 +40,14 @@ function getSelectedStateObjects(selectedStates, transformation = x=>x){
   };
 }
 
-const getStateAbbreviation = states => states.map(stateObj => stateObj.stateAbbreviation);
-
 export function getSelectedStateAbbreviations(state) {
-  return getSelectedStateObjects(state.taxpayerReturn.residenceHistory, getStateAbbreviation);
+  return getSelectedStateObjects(state, states =>
+    states.map(stateObj => stateObj.stateAbbreviation)
+  );
 }
 
-const getFlatMonths = states => flatten(states.map(stateObj => stateObj.months))
-
-export function getSelectedMonths(state){
-  return getSelectedStateObjects(state.taxpayerReturn.residenceHistory, getFlatMonths);
+export function getSelectedMonths(state) {
+  return getSelectedStateObjects(state, states =>
+    flatten(states.map(stateObj => stateObj.months))
+  );
 }
