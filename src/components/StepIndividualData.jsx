@@ -3,7 +3,7 @@ import Step from './Step';
 import taxpayerReturnFields from "../constants/taxpayerReturnFields";
 import ReturnField from "./ReturnField.jsx"
 
-export default class StepTwo extends Component {
+export default class StepIndividualData extends Component {
   render() {
     const { updateTaxpayerReturnField } = this.props.stepActions;
     return (
@@ -24,9 +24,6 @@ export default class StepTwo extends Component {
           errorText={"Must be a valid number (no commas)"}
           prompt="4. Enter tax-exempt interest (Form 1040, Line 8b)"
           placeholder="Tax exempt interest..." />
-        {
-          //if any foreign earned income, result page that out of scope for VITA
-        }
         <ReturnField
           onChange={updateTaxpayerReturnField}
           fieldName={taxpayerReturnFields.foreignEarnedIncome}

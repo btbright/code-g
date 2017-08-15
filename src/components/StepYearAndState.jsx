@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import { times, difference } from "lodash";
 import taxpayerReturnFields from "../constants/taxpayerReturnFields";
-import '../styles/StepOne.css';
+import { federalPovertyLineLevels } from "../constants/federalPovertyLineData"
+import '../styles/StepYearAndState.css';
 
 import StateResidenceForm from "./StateResidenceForm.jsx";
 
 function getTaxYears() {
-  const startYear = 2014;
-  return times(
-    new Date().getFullYear() - startYear + 1,
-    i => i + startYear
-  ).reverse();
+  return Object.keys(federalPovertyLineLevels).map(year => parseInt(year, 10)).reverse()
 }
 
-export default class StepOne extends Component {
+export default class StepYearAndState extends Component {
 	handleReturnFieldUpdate = fieldName => e => {
     this.props.stepActions.updateTaxpayerReturnField(fieldName, e.target.value)
   }

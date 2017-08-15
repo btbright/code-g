@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default props => <div>
-													{props.prompt}
+													<label>{props.prompt}</label>
 													<a
 														onClick={e => {e.preventDefault();props.onResult(true);}}
 														className="button confirmation-option"

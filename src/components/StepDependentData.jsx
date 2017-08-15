@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import Step from './Step';
-import taxpayerReturnFields from "../constants/taxpayerReturnFields";
 import Confirmation from "./Confirmation.jsx"
 import Dependent from "./Dependent.jsx"
 
-export default class StepFour extends Component {
+export default class StepDependentData extends Component {
   render() {
-    const { updateTaxpayerReturnField, updateDependentField, addDependent, removeDependent } = this.props.stepActions;
+    const { updateDependentField, addDependent, removeDependent } = this.props.stepActions;
+    const { nextStep } = this.props.navActions;
 		const shouldDisplayConfirmation = this.props.taxpayerReturn.dependents.length === 0
     return (
       <Step>
 				<div style={{display: shouldDisplayConfirmation ? "block" : "none"}}>
 					<Confirmation
-						prompt="Is the taxpayer claiming any dependents?"
-						onResult={updateTaxpayerReturnField.bind(null, taxpayerReturnFields.isClaimingDependents)} />
+						prompt="8. Is the taxpayer claiming any dependents?"
+            isBold={true}
+						onResult={isClaimingDependents => isClaimingDependents ? addDependent() : nextStep()} />
 				</div>
 				<div style={{display: !shouldDisplayConfirmation ? "block" : "none"}}>
 					{this.props.taxpayerReturn.dependents.map((dependent, i) => {

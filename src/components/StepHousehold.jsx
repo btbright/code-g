@@ -3,7 +3,7 @@ import Step from './Step';
 import taxpayerReturnFields from "../constants/taxpayerReturnFields";
 import ReturnField from "./ReturnField.jsx"
 
-export default class StepFive extends Component {
+export default class StepHousehold extends Component {
   render() {
     const { updateTaxpayerReturnField } = this.props.stepActions;
     return (

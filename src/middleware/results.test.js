@@ -1,4 +1,4 @@
-import { isStateDisqualification } from './results'
+import { isStateDisqualification, hasNonZeroForeignEarnedIncome } from './results'
 
 
 describe('results middleware', ()=>{
@@ -25,6 +25,24 @@ describe('results middleware', ()=>{
 
 		test('should be false if single expansion state is selected with no months and single state not confirmed', () => {
 			expect(isStateDisqualification([{stateAbbreviation: "NY", months: []}], false)).toBe(false);
+		});
+	})
+
+	describe('hasNonZeroForeignEarnedIncome', ()=>{
+		test('should be false if nothing has been selected', () => {
+			expect(hasNonZeroForeignEarnedIncome()).toBe(false);
+		});
+
+		test('should be true if it has a valid value', () => {
+			expect(hasNonZeroForeignEarnedIncome("20")).toBe(true);
+		});
+
+		test('should be true if it has a valid number value', () => {
+			expect(hasNonZeroForeignEarnedIncome(20)).toBe(true);
+		});
+
+		test('should be false if it is an empty string', () => {
+			expect(hasNonZeroForeignEarnedIncome("")).toBe(false);
 		});
 	})
 })

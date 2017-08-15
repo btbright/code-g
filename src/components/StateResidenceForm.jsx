@@ -46,6 +46,7 @@ export default class StateResidenceForm extends Component {
               <a
                 onClick={this.handleConfirmationClick(true)}
                 className="button confirmation-option"
+                style={{marginLeft: 16}}
                 href="#yes"
               >
                 Yes
