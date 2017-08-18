@@ -25,7 +25,6 @@ export default store => next => action => {
 			if (result){
 				const type = result.isTaxpayerQualified ? "qualified" : "modifiedAGIDisqualification"
 				const stateNames = getSelectedStateAbbreviations(state).nonExpansion.map(stateAbbreviation => states[stateAbbreviation]);
-				console.log('getSelectedMonths(state).nonExpansion', getSelectedMonths(state).nonExpansion)
 				const months = getSelectedMonths(state).nonExpansion.map(monthId => monthNames[monthId-1]);
 				store.dispatch({
 					type: types.UPDATE_RESULT,

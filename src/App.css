@@ -78,7 +78,7 @@ nav {
 	width: 20px;
 	border-radius: 10px;
 	background: #eeeeee;
-	transition: background .1s, color .1s;
+	transition: background .1s, color .1s, transform .1s;
 	margin: 0 6px;
 	display: flex;
   justify-content: center;
@@ -97,4 +97,5 @@ nav {
 	pointer-events: none;
 	background: #33C3F0;
 	color: rgba(255,255,255,.7);
+	transform: scale(1.2,1.2);
 }

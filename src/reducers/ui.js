@@ -25,10 +25,12 @@ export default (state = initialState, action) => {
 		case types.RESET_RESIDENCE_HISTORY:
 			return Object.assign({}, state, { isConfirmedSingleState: undefined });
 		case types.ADD_INVALID_FIELD:
-			if (state.invalidFields.indexOf(action.fieldName) !== -1) return state
-			return Object.assign({}, state, { invalidFields: [...state.invalidFields, action.fieldName] });
+			if (!!state.invalidFields.find(errorField => errorField.fieldName === action.fieldName)) return state
+			return Object.assign({}, state, { invalidFields: [...state.invalidFields, {fieldName: action.fieldName, errorText: action.errorText}] });
+		case types.ADD_INVALID_FIELDS:
+			return Object.assign({}, state, { invalidFields: [...state.invalidFields, ...action.errors ]});
 		case types.REMOVE_INVALID_FIELD:
-			return Object.assign({}, state, { invalidFields: state.invalidFields.filter(name => name !== action.fieldName) });
+			return Object.assign({}, state, { invalidFields: state.invalidFields.filter(error => error.fieldName !== action.fieldName) });
     default:
       return state;
   }

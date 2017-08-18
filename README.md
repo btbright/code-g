@@ -17,7 +17,6 @@
 - error message positioning (pushing down fields at small screen sizes)
 - gh-pages deployment
 - analytics
--
 
 - documentation
   - stack

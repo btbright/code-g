@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import * as taxpayerReturnActions from "./actions/actions";
 import * as navActions from "./actions/navActions";
 import { getTaxpayerReturn, getUI } from "./reducers";
+import { individualDataFields } from "./constants/steps";
 
 import "./styles/normalize.css";
 import "./styles/skeleton.css";
@@ -13,9 +14,9 @@ import "./App.css";
 import NavStatus from "./components/NavStatus.jsx";
 
 import StepYearAndState from "./components/StepYearAndState.jsx";
-import StepIndividualData from "./components/StepIndividualData.jsx";
 import StepDependentData from "./components/StepDependentData.jsx";
 import StepHousehold from "./components/StepHousehold.jsx";
+import FieldsStep from "./components/FieldsStep.jsx"
 
 import NextStepButton from "./components/NextStepButton.jsx";
 import PrevStepButton from "./components/PrevStepButton.jsx";
@@ -27,7 +28,7 @@ import ResultQualification from "./components/ResultQualification.jsx";
 
 const steps = [
   StepYearAndState,
-  StepIndividualData,
+  FieldsStep(individualDataFields),
   StepDependentData,
   StepHousehold
 ];

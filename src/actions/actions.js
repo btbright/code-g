@@ -2,26 +2,42 @@ import * as types from "./action-types";
 import { validationRules } from "../constants/taxpayerReturnFields";
 
 const rules = {
-  money: value => value.match(/^\d+(?:\.?\d{0,2})$/),
-  integer: value => value.match(/^\d+$/)
+  money: {
+    getIsValid: value => value.match(/^\d+(?:\.?\d{0,2})$/),
+    errorText: "Must be a valid number (no commas)"
+  },
+  integer: {
+    getIsValid: value => value.match(/^\d+$/),
+    errorText: "Must be a valid number"
+  }
 };
 
 function runValidationRule(validationRuleName, fieldValue) {
-  return rules[validationRuleName](fieldValue);
+  const rule = rules[validationRuleName];
+  const isValid = rule.getIsValid(fieldValue);
+  let errorText
+  if (!isValid){
+    errorText = rule.errorText;
+  }
+  return {isValid, errorText}
 }
 
 export function updateTaxpayerReturnField(fieldName, fieldValue) {
   return dispatch => {
     const validationRuleName = validationRules[fieldName];
     if (validationRuleName && fieldValue !== "") {
-      const isValid = runValidationRule(validationRuleName, fieldValue);
+      const {isValid, errorText} = runValidationRule(validationRuleName, fieldValue);
       const type = isValid
         ? types.REMOVE_INVALID_FIELD
         : types.ADD_INVALID_FIELD;
-      dispatch({
+      const action = {
         type,
         fieldName
-      });
+      }
+      if (!isValid){
+        action.errorText = errorText;
+      }
+      dispatch(action);
     }
 
     dispatch({
