@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { times, difference } from "lodash";
 import taxpayerReturnFields from "../constants/taxpayerReturnFields";
 import { federalPovertyLineLevels } from "../constants/federalPovertyLineData"
+import { yearAndStateFields } from "../constants/steps";
+import { decorateFieldsWithState } from "../reducers";
+import classnames from 'classnames';
 import '../styles/StepYearAndState.css';
 
 import StateResidenceForm from "./StateResidenceForm.jsx";
@@ -22,18 +25,21 @@ export default class StepYearAndState extends Component {
   }
   render() {
 		const numberOfStatesToShow = typeof this.props.ui.isConfirmedSingleState === "undefined" || this.props.ui.isConfirmedSingleState === true ? 1 : this.props.taxpayerReturn.residenceHistory.length + 1
+    const [ taxYearField, residenceHistoryField ] = decorateFieldsWithState(yearAndStateFields, this.props.taxpayerReturn, this.props.ui);
+
     return (
 			<div className="step">
-				<div>
+				<div className={classnames("return-field", taxYearField.hasError && "error")}>
 					<label htmlFor="selectTaxYear">
-						1. For what tax year are you trying to claim this exemption?
+						{taxYearField.promptText}
 					</label>
+          <p className="error">{taxYearField.errorText}</p>
 					<select
 						onChange={this.handleReturnFieldUpdate(taxpayerReturnFields.taxYear)}
 						value={this.props.taxpayerReturn.taxYear}
 						id="selectTaxYear"
 					>
-						<option value="">----</option>
+						<option value="">{taxYearField.placeholder}</option>
 						{getTaxYears().map(year =>
 							<option key={year} value={year}>
 								{year}
@@ -41,10 +47,11 @@ export default class StepYearAndState extends Component {
 						)}
 					</select>
 				</div>
-				<div>
+				<div className={classnames("return-field", residenceHistoryField.hasError && "error")}>
 					<label htmlFor="taxYearStates">
-						2. In what state(s) did you live in this tax year? <span style={{opacity: this.props.taxpayerReturn.residenceHistory.length === 0 ? 0 : 1}} className="reset-link" onClick={this.props.stepActions.resetResidenceHistory}>reset</span>
+						{residenceHistoryField.promptText} <span style={{opacity: this.props.taxpayerReturn.residenceHistory.length === 0 ? 0 : 1}} className="reset-link" onClick={this.props.stepActions.resetResidenceHistory}>reset</span>
 					</label>
+          <p className="error">{residenceHistoryField.errorText}</p>
 					<div id="taxYearStates">
 						{times(numberOfStatesToShow, i => {
 							const state = this.props.taxpayerReturn.residenceHistory[i]

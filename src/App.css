@@ -47,6 +47,10 @@ nav {
 	position: relative;
 }
 
+.return-field select {
+	display: block;
+}
+
 .return-field.error input {
 	border-color: red;
 }

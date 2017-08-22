@@ -1,5 +1,6 @@
 export default {
   taxYear: "taxYear",
+  residenceHistory: "residenceHistory",
   AGI: "AGI",
   taxExemptInterest: "taxExemptInterest",
   foreignEarnedIncome: "foreignEarnedIncome",

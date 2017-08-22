@@ -16,7 +16,7 @@ export default class Dependent extends Component {
 				<h1 style={{fontSize: '2rem'}}>Dependent #{this.props.index+1} <span onClick={this.handleRemove} className="remove">remove</span></h1>
 				<ReturnField
 					fieldName={taxpayerReturnFields.AGI}
-					prompt="1. Enter dependent’s AGI (Form 1040, Line 37 or 38)"
+					promptText="1. Enter dependent’s AGI (Form 1040, Line 37 or 38)"
 					placeholder="AGI..."
 					value={this.props.dependent[taxpayerReturnFields.AGI]}
 					hasError={this.props.invalidFields.indexOf(`dependent:${this.props.index}:${taxpayerReturnFields.AGI}`) !== -1}
@@ -24,7 +24,7 @@ export default class Dependent extends Component {
 					onChange={this.handleFieldUpdate} />
 				<ReturnField
 					fieldName={taxpayerReturnFields.socialSecurityBenefitsTotal}
-					prompt="2. Enter dependent’s total amount of social security benefits (Form 1040, Line 20a)"
+					promptText="2. Enter dependent’s total amount of social security benefits (Form 1040, Line 20a)"
 					placeholder="Taxable social security benefits..."
 					value={this.props.dependent[taxpayerReturnFields.socialSecurityBenefitsTotal]}
 					hasError={this.props.invalidFields.indexOf(`dependent:${this.props.index}:${taxpayerReturnFields.socialSecurityBenefitsTotal}`) !== -1}
@@ -32,7 +32,7 @@ export default class Dependent extends Component {
 					onChange={this.handleFieldUpdate} />
 				<ReturnField
 					fieldName={taxpayerReturnFields.socialSecurityBenefitsTaxable}
-					prompt="3. Enter dependent’s taxable social security benefits (Form 1040, Line 20b)"
+					promptText="3. Enter dependent’s taxable social security benefits (Form 1040, Line 20b)"
 					placeholder="Taxable social security benefits..."
 					value={this.props.dependent[taxpayerReturnFields.socialSecurityBenefitsTaxable]}
 					hasError={this.props.invalidFields.indexOf(`dependent:${this.props.index}:${taxpayerReturnFields.socialSecurityBenefitsTaxable}`) !== -1}

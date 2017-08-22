@@ -28,9 +28,18 @@ export default (state = initialState, action) => {
 			if (!!state.invalidFields.find(errorField => errorField.fieldName === action.fieldName)) return state
 			return Object.assign({}, state, { invalidFields: [...state.invalidFields, {fieldName: action.fieldName, errorText: action.errorText}] });
 		case types.ADD_INVALID_FIELDS:
-			return Object.assign({}, state, { invalidFields: [...state.invalidFields, ...action.errors ]});
+			const errorsToAdd = action.errors.reduce((errors, error) => {
+				//if error exists, don't readd
+				if (!state.invalidFields.find(field => field.fieldName === error.fieldName && field.errorText === error.errorText)){
+					errors.push(error)
+				}
+				return errors;
+			}, []);
+			return Object.assign({}, state, { invalidFields: [...state.invalidFields, ...errorsToAdd ]});
 		case types.REMOVE_INVALID_FIELD:
 			return Object.assign({}, state, { invalidFields: state.invalidFields.filter(error => error.fieldName !== action.fieldName) });
+		case types.REMOVE_INVALID_FIELDS:
+			return Object.assign({}, state, { invalidFields: state.invalidFields.filter(error => action.fieldNames.indexOf(error.fieldName) === -1) });
     default:
       return state;
   }

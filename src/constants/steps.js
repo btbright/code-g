@@ -1,5 +1,19 @@
 import taxpayerReturnFields from "../constants/taxpayerReturnFields";
 
+export const yearAndStateFields = [
+	{
+		fieldName: taxpayerReturnFields.taxYear,
+		promptText: "1. For what tax year are you trying to claim this exemption?",
+		placeholder: "----",
+		isRequired: true
+	},
+	{
+		fieldName: taxpayerReturnFields.residenceHistory,
+		promptText: "2. In what state(s) did you live in this tax year?",
+		isRequired: true
+	}
+]
+
 export const individualDataFields = [
 	{
 		fieldName: taxpayerReturnFields.AGI,
@@ -35,5 +49,6 @@ export const individualDataFields = [
 
 
 export default {
+	1 : yearAndStateFields,
 	2 : individualDataFields
 }
