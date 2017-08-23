@@ -51,15 +51,15 @@ nav {
 	display: block;
 }
 
-.return-field.error input {
+.return-field.error input,
+.return-field.error select {
 	border-color: red;
 }
 
 .return-field .error {
 	display: inline-block;
 	color: red;
-	margin-bottom: 0;
-	margin-left: 10px;
+	margin-bottom: 0px;
 	transition: opacity .1s;
 	opacity: 0;
 }
@@ -70,6 +70,13 @@ nav {
 
 .return-field label {
 	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 0px;
+}
+
+.return-field input,
+.return-field select {
+	margin-top:10px;
 }
 
 .nav-status {

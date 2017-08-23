@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-/* globalsdf selectors */
+/* globalss selectors */
 
 export function getTaxpayerReturn(state) {
   return state.taxpayerReturn;

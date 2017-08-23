@@ -52,14 +52,18 @@ export function updateDependentField(index, fieldName, fieldValue) {
   return dispatch => {
     const validationRuleName = validationRules[fieldName];
     if (validationRuleName && fieldValue !== "") {
-      const isValid = runValidationRule(validationRuleName, fieldValue);
+      const {isValid, errorText} = runValidationRule(validationRuleName, fieldValue);
       const type = isValid
         ? types.REMOVE_INVALID_FIELD
         : types.ADD_INVALID_FIELD;
-      dispatch({
+      const action = {
         type,
         fieldName: `dependent:${index}:${fieldName}`
-      });
+      }
+      if (!isValid){
+        action.errorText = errorText;
+      }
+      dispatch(action);
     }
 
     dispatch({

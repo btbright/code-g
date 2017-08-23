@@ -10,6 +10,7 @@ export default {
 };
 
 export const validationRules = {
+  taxYear: "integer",
   AGI: "money",
   taxExemptInterest: "money",
   foreignEarnedIncome: "money",

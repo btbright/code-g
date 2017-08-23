@@ -20,8 +20,17 @@ export default store => next => action => {
   const requiredFields = currentStepFields.filter(field => field.isRequired);
   const invalidlyMissingValueFieldNames = requiredFields.reduce(
     (invalidFieldNames, field) => {
-      if (isEmptyValue(state.taxpayerReturn[field.fieldName])) {
-        invalidFieldNames.push(field.fieldName);
+      //check all dependents
+      if (state.ui.step === 3){
+        state.taxpayerReturn.dependents.forEach((dependent, i) => {
+          if (isEmptyValue(dependent[field.fieldName])) {
+            invalidFieldNames.push(`dependent:${i}:${field.fieldName}`);
+          }
+        })
+      } else {
+        if (isEmptyValue(state.taxpayerReturn[field.fieldName])) {
+          invalidFieldNames.push(field.fieldName);
+        }
       }
       return invalidFieldNames;
     },
@@ -30,7 +39,6 @@ export default store => next => action => {
 
   const validFields = difference(requiredFields.map(field => field.fieldName), invalidlyMissingValueFieldNames);
 
-  console.log("validFields", validFields)
   if (validFields.length !== 0){
     store.dispatch({
       type: types.REMOVE_INVALID_FIELDS,
@@ -54,7 +62,7 @@ export default store => next => action => {
 };
 
 function isEmptyValue(fieldValue) {
-  if (fieldValue === "") return true;
+  if (fieldValue === "" || typeof fieldValue === "undefined") return true;
   if (isArray(fieldValue) && fieldValue.length === 0) return true;
   return false;
 }

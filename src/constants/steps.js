@@ -1,5 +1,26 @@
 import taxpayerReturnFields from "../constants/taxpayerReturnFields";
 
+export const dependentFields = [
+	{
+		fieldName: taxpayerReturnFields.AGI,
+		promptText: "1. Enter dependent’s AGI (Form 1040, Line 37 or 38)",
+		placeholder: "AGI...",
+		isRequired: true
+	},
+	{
+		fieldName: taxpayerReturnFields.socialSecurityBenefitsTotal,
+		promptText: "2. Enter dependent’s total amount of social security benefits (Form 1040, Line 20a)",
+		placeholder: "Total social security benefits...",
+		isRequired: true
+	},
+	{
+		fieldName: taxpayerReturnFields.socialSecurityBenefitsTaxable,
+		promptText: "3. Enter dependent’s taxable social security benefits (Form 1040, Line 20b)",
+		placeholder: "Taxable social security benefits...",
+		isRequired: true
+	}
+]
+
 export const yearAndStateFields = [
 	{
 		fieldName: taxpayerReturnFields.taxYear,
@@ -50,5 +71,6 @@ export const individualDataFields = [
 
 export default {
 	1 : yearAndStateFields,
-	2 : individualDataFields
+	2 : individualDataFields,
+	3 : dependentFields
 }
