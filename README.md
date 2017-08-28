@@ -9,12 +9,8 @@
 
 ### todo
 
-- field validation and good error messages
-- stop submission until all valid
-- nav positioning
 - result formatting
 - nav UX
-- error message positioning (pushing down fields at small screen sizes)
 - gh-pages deployment
 - analytics
 
