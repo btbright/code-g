@@ -1,6 +1,7 @@
 
 
 ## Healthcare Exemption Tools - Code G
+[![Build Status](https://travis-ci.org/btbright/code-g.svg?branch=master)](https://travis-ci.org/btbright/code-g)
 
 `npm start` to start a server on `localhost:3000`
 
