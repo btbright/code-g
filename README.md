@@ -2,7 +2,6 @@
 # Code G Exemption
 [![Build Status](https://travis-ci.org/btbright/code-g.svg?branch=master)](https://travis-ci.org/btbright/code-g)
 
-## Purpose
 This tool is used to determine if a taxpayer is eligible for the Code G exemption from the ACA coverage requirement. It uses state residency history, modified adjusted gross income and dependent information to calculate how the taxpayer's income compares to the poverty level standards.
 
 ## Resources used
