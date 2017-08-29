@@ -1,9 +1,3 @@
-export const additionalFamilyMemberAmounts = {
-  "2016": 4160,
-  "2015": 4060,
-  "2014": 4020
-};
-
 export const federalPovertyLineLevels = {
   "2016": {
     "1": 11770,
@@ -35,4 +29,11 @@ export const federalPovertyLineLevels = {
     "7": 35610,
     "8": 39630
   }
+};
+
+
+export const additionalFamilyMemberAmounts = {
+  "2016": 4160,
+  "2015": 4060,
+  "2014": 4020
 };
