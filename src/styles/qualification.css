@@ -11,3 +11,12 @@
 .result {
 	margin-top: 40px;
 }
+
+.total-row td {
+	border-top: 1px solid #444;
+	border-bottom: none;
+}
+
+.taxpayer-fields tr:nth-last-child(3) td {
+	border: none;
+}

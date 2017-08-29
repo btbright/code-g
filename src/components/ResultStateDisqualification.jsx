@@ -14,9 +14,6 @@ function getStates(residenceHistoryStateKeys){
   })
 }
 
-const maybePluralizedState = stateKeys => stateKeys.length > 1 ? "states" : "a state"
-const joinedStates = stateKeys => stateKeys.map(stateKey => states[stateKey]).join(", ")
-
 export default props => <div className={classnames("result")}>
   <h1><span style={{color: "red"}}>&#x2716;</span>&nbsp;&nbsp;You Do Not Qualify</h1>
   <p>

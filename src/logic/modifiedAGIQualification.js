@@ -18,7 +18,11 @@ export function getModifiedAGIQualificationResult(taxpayerReturn) {
   const fplPercentage = calculatePercentageOfFPL(referenceFPL, modifiedAGI);
 
   return {
+    parsedTaxpayerReturn,
+    modifiedAGI,
+    referenceFPL,
     fplPercentage,
+    numberOfPeopleInTaxHousehold: taxpayerReturn.numberOfPeopleInTaxHousehold,
     isTaxpayerQualified: fplPercentage < 138
   };
 }

@@ -34,3 +34,12 @@ export const dependentFields = [
   "socialSecurityBenefitsTotal",
   "socialSecurityBenefitsTaxable"
 ];
+
+export const resultFields = {
+  AGI: {name: "AGI"},
+  dependents: {name: "dependents"},
+  taxExemptInterest: {name: "Tax Exempt Interest"},
+  foreignEarnedIncome: {name: "Foreign Earned Income"},
+  socialSecurityBenefitsTotal: {name: "Social Security Benefits Total"},
+  socialSecurityBenefitsTaxable: {name: "Social Security Benefits Taxable", type: "negative"}
+}

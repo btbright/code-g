@@ -1,7 +1,6 @@
 import * as types from '../actions/action-types';
-import states, { statesThatDidNotExpandMedicare } from '../constants/states'
-import monthNames from '../constants/months'
-import { getSelectedStateAbbreviations, getSelectedMonths } from '../reducers'
+import { statesThatDidNotExpandMedicare } from '../constants/states'
+import { getSelectedStateAbbreviations } from '../reducers'
 import { getModifiedAGIQualificationResult } from '../logic/modifiedAGIQualification'
 
 export default store => next => action => {
