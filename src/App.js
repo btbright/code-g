@@ -79,13 +79,9 @@ class App extends Component {
     );
   };
   render() {
-    console.log("this.props.taxpayerReturn", this.props.taxpayerReturn);
-    console.log("this.props.ui", this.props.ui);
-
-    let componentToRender = this.props.ui.result
+    return this.props.ui.result
       ? this.renderResult()
-      : this.renderStep();
-    return componentToRender;
+      : this.renderStep()
   }
 }
 

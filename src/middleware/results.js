@@ -24,11 +24,11 @@ export default store => next => action => {
 			const result = getModifiedAGIQualificationResult(state.taxpayerReturn)
 			if (result){
 				const type = result.isTaxpayerQualified ? "qualified" : "modifiedAGIDisqualification"
-				const stateNames = getSelectedStateAbbreviations(state).nonExpansion.map(stateAbbreviation => states[stateAbbreviation]);
-				const months = getSelectedMonths(state).nonExpansion.map(monthId => monthNames[monthId-1]);
+				const residenceHistoryStateKeys = getSelectedStateAbbreviations(state).nonExpansion;
+				const taxYear = state.taxpayerReturn.taxYear
 				store.dispatch({
 					type: types.UPDATE_RESULT,
-					result: Object.assign({type, stateNames, months}, result)
+					result: Object.assign({type, residenceHistoryStateKeys, taxYear}, result)
 				})
 				return
 			}

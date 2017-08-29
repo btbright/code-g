@@ -1,0 +1,13 @@
+.residence-state {
+	font-weight: bold;
+	color: #444;
+}
+
+.qualification-section .requirement {
+	font-style: italic;
+	color: #888;
+}
+
+.result {
+	margin-top: 40px;
+}
