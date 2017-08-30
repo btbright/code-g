@@ -1,11 +1,9 @@
 .residence-state {
-	font-weight: bold;
-	color: #444;
+	color: #2196f3;
 }
 
 .qualification-section .requirement {
-	font-style: italic;
-	color: #888;
+	font-weight: bold;
 }
 
 .result {
