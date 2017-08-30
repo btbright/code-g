@@ -7,9 +7,6 @@ This tool is used to determine if a taxpayer is eligible for the Code G exemptio
 ## Resources used
 *needs mae*
 
-## How to add a new tax year
-The years for the first question (tax year selection) are generated from the data found in `/src/constants/federalPovertyLineData.js`. To add a new year, add the limits to the `federalPovertyLineLevels` object with a new key for the year you are adding. Also, add the additional amount for family members above 8 to the `additionalFamilyMemberAmounts` object, also keyed by the new year you are adding. The data for these is found *MAE WHERE DOES THIS COME FROM?*
-
 ## How to report an issue
 We've worked hard to make sure the app provides accurate results in all cases but if you find an inaccurate result or bug, please let us know by opening an issue here on GitHub. We'll get it fixed as soon as we can. If you are a designed or developer, we'd also love pull requests or suggestions on how to improve the app.
 
@@ -33,6 +30,9 @@ $ npm start
 $ npm test
 ```
 
+## How to add a new tax year
+The years for the first question (tax year selection) are generated from the data found in `/src/constants/federalPovertyLineData.js`. To add a new year, add the limits to the `federalPovertyLineLevels` object with a new key for the year you are adding. Also, add the additional amount for family members above 8 to the `additionalFamilyMemberAmounts` object, also keyed by the new year you are adding. The data for these is found *MAE WHERE DOES THIS COME FROM?*
+
 ## Technical details
 This is a front-end only app, so no taxpayer data entered is saved in any way. It was created with create-react-app and has not been ejected. For details on that process, if needed, see the documentation for CRA below.
 
@@ -42,5 +42,8 @@ This is a front-end only app, so no taxpayer data entered is saved in any way. I
   - [lodash](https://lodash.com)
   - [skeleton](http://getskeleton.com/)
 
+## Who
+Built by [@maegan_whiting](https://twitter.com/maegan_whiting) and [@btbright](https://twitter.com/btbright)
+
 ## License
-MIT
+MIT 2017 Maegan Whiting and Ben Bright
