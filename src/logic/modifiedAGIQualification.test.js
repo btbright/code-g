@@ -124,14 +124,16 @@ describe('ModifiedAGIQualification logic', ()=>{
 				dependents: []
 			}
 
-			expect(getModifiedAGIQualificationResult(taxpayerReturn)).toEqual({fplPercentage: 42.19, isTaxpayerQualified: true});
+			const {fplPercentage, isTaxpayerQualified} = getModifiedAGIQualificationResult(taxpayerReturn)
+
+			expect({fplPercentage, isTaxpayerQualified}).toEqual({fplPercentage: 42.19, isTaxpayerQualified: true});
 		});
 
 		test('should handle tests', () => {
 			returnTests.forEach(taxpayerReturn => {
 				const { result, ...returnTest } = taxpayerReturn;
-				const testResult = getModifiedAGIQualificationResult(returnTest)
-				const diff = getObjectDiff(result, testResult)
+				const { fplPercentage, isTaxpayerQualified } = getModifiedAGIQualificationResult(returnTest)
+				const diff = getObjectDiff(result, { fplPercentage, isTaxpayerQualified })
 				expect(diff.length).toEqual(0)
 			})
 		});
