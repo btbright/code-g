@@ -26,6 +26,13 @@
 	min-height: 450px;
 }
 
+.step .introText {
+	font-size: 2rem;
+  text-align: center;
+  letter-spacing: 0.03rem;
+  margin-bottom: 40px;
+}
+
 @media (max-width: 800px) {
   .step {
 		max-width: 100%;
@@ -161,4 +168,19 @@ nav {
 .vita-confirmation.hidden {
 	opacity: 0;
 	pointer-events: none;
+}
+
+footer {
+	position: absolute;
+	bottom: 5px;
+}
+
+footer p {
+	margin-bottom: 0;
+}
+
+footer p a {
+	text-decoration: none;
+	color: #ccc;
+	font-size: 12px;
 }

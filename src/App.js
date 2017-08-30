@@ -26,7 +26,7 @@ import ResultQualification from "./components/results/ResultQualification.jsx";
 
 const steps = [
   StepYearAndState,
-  FieldsStep(individualDataFields),
+  FieldsStep(individualDataFields, "Use Summary/Print page in TaxSlayer"),
   StepDependentData,
   FieldsStep(householdSizeFields)
 ];
@@ -69,6 +69,9 @@ class App extends Component {
             isDisabled={false}
           />
         </nav>
+        <footer>
+          <p><a href="https://github.com/btbright/code-g" target="_blank">More information</a></p>
+        </footer>
       </div>
     );
   };
