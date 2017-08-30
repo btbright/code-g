@@ -6,6 +6,7 @@ export default props => <div className={classnames("return-field", props.hasErro
                             {props.promptText}
                           </label>
                           <p className="error">{props.errorText}</p>
+                          {props.helperText && <p className="helper-text">{props.helperText}</p>}
                           <input
                             className="u-full-width"
                             type="text"

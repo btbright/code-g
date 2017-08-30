@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import taxpayerReturnFields from "../constants/taxpayerReturnFields";
-import ReturnField from "./ReturnField.jsx";
-import "../styles/Dependent.css";
+import taxpayerReturnFields from "../../constants/taxpayerReturnFields";
+import ReturnField from "../fields/ReturnField.jsx";
+import "../../styles/Dependent.css";
 
 function makeErrorKey(index, fieldName){
 	return `dependent:${index}:${fieldName}`;

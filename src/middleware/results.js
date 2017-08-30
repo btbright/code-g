@@ -35,7 +35,7 @@ export default store => next => action => {
 			}
 		}
 
-		if (hasNonZeroForeignEarnedIncome(state.taxpayerReturn.foreignEarnedIncome) && !state.ui.hasOutOfScopeOverride){
+		if (hasNonZeroForeignEarnedIncome(state.taxpayerReturn.foreignEarnedIncome) && (state.ui.isVITAUser && !state.ui.hasOutOfScopeOverride)){
 			store.dispatch({
 				type: types.UPDATE_RESULT,
 				result: {

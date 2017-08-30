@@ -48,8 +48,9 @@ nav {
 
 @media (min-height: 800px) {
   nav {
-		position: static;
+		position: relative;
 		margin-top:100px;
+		bottom: auto;
 	}
 }
 
@@ -100,6 +101,12 @@ nav {
 	margin-top:10px;
 }
 
+.return-field .helper-text {
+	margin: 4px 0px 0px 0;
+  font-size: 12px;
+  color: #888;
+}
+
 .nav-status {
 	display: flex;
 	align-items: center;
@@ -130,4 +137,28 @@ nav {
 	background: #33C3F0;
 	color: rgba(255,255,255,.7);
 	transform: scale(1.2,1.2);
+}
+
+.vita-confirmation {
+	position: absolute;
+	left: 0;
+	top: 12px;
+	transition: opacity .2s;
+}
+
+.vita-confirmation input {
+	margin: 0 5px 0 0;
+}
+
+.vita-confirmation label {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+	font-weight: normal;
+}
+
+.vita-confirmation.hidden {
+	opacity: 0;
+	pointer-events: none;
 }

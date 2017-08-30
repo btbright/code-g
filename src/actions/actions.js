@@ -129,3 +129,9 @@ export function overrideOutOfScope() {
     type: types.OVERRIDE_OUT_OF_SCOPE
   };
 }
+
+export function toggleVITAUser() {
+  return {
+    type: types.TOGGLE_VITA_USER
+  };
+}

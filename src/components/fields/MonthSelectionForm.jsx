@@ -1,7 +1,7 @@
 import React from "react";
-import months from "../constants/months";
+import months from "../../constants/months";
 import { times } from "lodash";
-import '../styles/MonthSelectionForm.css';
+import '../../styles/MonthSelectionForm.css';
 
 export default props =>
   <div>

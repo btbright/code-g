@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { times, difference } from "lodash";
-import taxpayerReturnFields from "../constants/taxpayerReturnFields";
-import { federalPovertyLineLevels } from "../constants/federalPovertyLineData"
-import { yearAndStateFields } from "../constants/steps";
-import { decorateFieldsWithState } from "../reducers";
+import taxpayerReturnFields from "../../../constants/taxpayerReturnFields";
+import { federalPovertyLineLevels } from "../../../constants/federalPovertyLineData"
+import { yearAndStateFields } from "../../../constants/steps";
+import { decorateFieldsWithState } from "../../../reducers";
 import classnames from 'classnames';
-import '../styles/StepYearAndState.css';
+import '../../../styles/StepYearAndState.css';
 
-import StateResidenceForm from "./StateResidenceForm.jsx";
+import StateResidenceForm from "../../fields/StateResidenceForm.jsx";
 
 function getTaxYears() {
   return Object.keys(federalPovertyLineLevels).map(year => parseInt(year, 10)).reverse()

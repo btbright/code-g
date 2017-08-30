@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Step from './Step';
-import renderFieldSet from './renderFieldSet.jsx'
-import { decorateFieldsWithState } from '../reducers'
+import Step from '../Step';
+import renderFieldSet from '../../fields/renderFieldSet.jsx'
+import { decorateFieldsWithState } from '../../../reducers'
 
 class FieldsStepComponent extends Component {
 	render() {

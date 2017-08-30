@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Step from './Step';
-import Confirmation from "./Confirmation.jsx"
-import Dependent from "./Dependent.jsx"
+import Step from '../Step';
+import Confirmation from "../../fields/Confirmation.jsx"
+import Dependent from "../Dependent.jsx"
 
 export default class StepDependentData extends Component {
   render() {

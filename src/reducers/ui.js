@@ -4,6 +4,7 @@ const initialState = {
 	step : 1,
 	isConfirmedSingleState: undefined,
 	hasOutOfScopeOverride: false,
+	isVITAUser: true,
 	invalidFields: [],
 	result: undefined
 }
@@ -12,6 +13,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
 		case types.UPDATE_RESULT:
 			return Object.assign({}, state, {result: action.result})
+		case types.TOGGLE_VITA_USER:
+			return Object.assign({}, state, {isVITAUser: !state.isVITAUser})
 		case types.OVERRIDE_OUT_OF_SCOPE:
 			return Object.assign({}, state, {hasOutOfScopeOverride: true, step: 3, result: undefined})
 		case types.UPDATE_STEP:

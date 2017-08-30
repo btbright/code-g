@@ -11,14 +11,15 @@ import "./styles/skeleton.css";
 import "./styles/skeletonOverrides.css";
 import "./App.css";
 
-import NavStatus from "./components/NavStatus.jsx";
+import VITAConfirmation from "./components/nav/VITAConfirmation.jsx";
+import NavStatus from "./components/nav/NavStatus.jsx";
 
-import StepYearAndState from "./components/StepYearAndState.jsx";
-import StepDependentData from "./components/StepDependentData.jsx";
-import FieldsStep from "./components/FieldsStep.jsx";
+import StepYearAndState from "./components/step/steps/StepYearAndState.jsx";
+import StepDependentData from "./components/step/steps/StepDependentData.jsx";
+import FieldsStep from "./components/step/steps/FieldsStep.jsx";
 
-import NextStepButton from "./components/NextStepButton.jsx";
-import PrevStepButton from "./components/PrevStepButton.jsx";
+import NextStepButton from "./components/nav/NextStepButton.jsx";
+import PrevStepButton from "./components/nav/PrevStepButton.jsx";
 
 import ResultOutOfVITAScopeDisqualification from "./components/results/ResultOutOfVITAScopeDisqualification.jsx";
 import ResultQualification from "./components/results/ResultQualification.jsx";
@@ -49,6 +50,11 @@ class App extends Component {
           navActions={this.props.navActions}
         />
         <nav>
+          <VITAConfirmation
+            isVITAUser={this.props.ui.isVITAUser}
+            onVitaConfirmation={this.props.stepActions.toggleVITAUser}
+            isHidden={this.props.ui.step !== 1}
+          />
           <PrevStepButton
             onClick={this.props.navActions.previousStep}
             isHidden={this.props.ui.step === 1}
@@ -71,14 +77,16 @@ class App extends Component {
     const ResultComponent = results[type];
     return (
       <div className="container result-container">
-        <ResultComponent onOverrideOutOfScope={this.props.stepActions.overrideOutOfScope} taxpayerReturn={this.props.taxpayerReturn} {...rest} />
+        <ResultComponent
+          onOverrideOutOfScope={this.props.stepActions.overrideOutOfScope}
+          taxpayerReturn={this.props.taxpayerReturn}
+          {...rest}
+        />
       </div>
     );
   };
   render() {
-    return this.props.ui.result
-      ? this.renderResult()
-      : this.renderStep()
+    return this.props.ui.result ? this.renderResult() : this.renderStep();
   }
 }
 

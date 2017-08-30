@@ -8,3 +8,17 @@
 .reset-link:hover {
 	color: #999;
 }
+
+#taxYearStates select {
+	margin-top: 0;
+}
+
+#taxYearStates .confirmation-option {
+	margin-bottom: 0;
+}
+
+#taxYearStates > .row {
+	display: flex;
+	align-items: flex-end;
+	margin-top: 5px;
+}

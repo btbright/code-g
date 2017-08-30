@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import StateSelect from "./StateSelect.jsx";
 import MonthSelectionForm from "./MonthSelectionForm.jsx";
-import states from "../constants/states";
-import '../styles/StateResidenceForm.css'
+import states from "../../constants/states";
+import '../../styles/StateResidenceForm.css'
 
 export default class StateResidenceForm extends Component {
   handleConfirmationClick = isConfirmed => e => {
