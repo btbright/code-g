@@ -116,7 +116,10 @@ describe('taxpayerReturn actions/reducer', ()=>{
 				{stateAbbreviation: "AL", months: []}
 			]
 		}
-		const testAction = actions.confirmSingleState(true)
+		const testAction = {
+      type: "CONFIRM_SINGLE_STATE",
+      isConfirmedSingleState: true
+    }
 		const result = taxpayerReturn(testState, testAction)
 		expect(result.residenceHistory[0].months).toEqual(expect.arrayContaining([1,2,3,4,5,6,7,8,9,10,11,12]));
 	});

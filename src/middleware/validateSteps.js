@@ -5,6 +5,8 @@ import { isArray, difference } from "lodash";
 export default store => next => action => {
   const state = store.getState();
 
+  //only validate if we're going forward to a step
+  //we haven't been to before
   if (
     action.type !== types.UPDATE_STEP ||
     action.increment < 0 ||

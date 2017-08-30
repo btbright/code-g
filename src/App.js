@@ -70,7 +70,15 @@ class App extends Component {
           />
         </nav>
         <footer>
-          <p><a href="https://github.com/btbright/code-g" target="_blank">More information</a></p>
+          <p>
+            <a
+              href="https://github.com/btbright/code-g"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              More information
+            </a>
+          </p>
         </footer>
       </div>
     );

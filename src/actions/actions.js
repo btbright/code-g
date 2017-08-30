@@ -112,10 +112,16 @@ export function selectStateMonth(stateIndex, monthId) {
 }
 
 export function confirmSingleState(isConfirmedSingleState) {
-  return {
-    type: types.CONFIRM_SINGLE_STATE,
-    isConfirmedSingleState
-  };
+  return dispatch => {
+    dispatch({
+      type: types.REMOVE_INVALID_FIELD,
+      fieldName: "residenceHistory"
+    });
+    dispatch({
+      type: types.CONFIRM_SINGLE_STATE,
+      isConfirmedSingleState
+    });
+  }
 }
 
 export function resetResidenceHistory() {
