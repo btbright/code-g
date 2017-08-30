@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import * as taxpayerReturnActions from "./actions/actions";
 import * as navActions from "./actions/navActions";
 import { getTaxpayerReturn, getUI } from "./reducers";
-import { individualDataFields } from "./constants/steps";
+import { individualDataFields, householdSizeFields } from "./constants/steps";
 
 import "./styles/normalize.css";
 import "./styles/skeleton.css";
@@ -15,27 +15,24 @@ import NavStatus from "./components/NavStatus.jsx";
 
 import StepYearAndState from "./components/StepYearAndState.jsx";
 import StepDependentData from "./components/StepDependentData.jsx";
-import StepHousehold from "./components/StepHousehold.jsx";
-import FieldsStep from "./components/FieldsStep.jsx"
+import FieldsStep from "./components/FieldsStep.jsx";
 
 import NextStepButton from "./components/NextStepButton.jsx";
 import PrevStepButton from "./components/PrevStepButton.jsx";
 
-import ResultStateDisqualification from "./components/ResultStateDisqualification.jsx";
-import ResultModifiedAGIDisqualification from "./components/ResultModifiedAGIDisqualification.jsx";
-import ResultOutOfVITAScopeDisqualification from "./components/ResultOutOfVITAScopeDisqualification.jsx";
-import ResultQualification from "./components/ResultQualification.jsx";
+import ResultOutOfVITAScopeDisqualification from "./components/results/ResultOutOfVITAScopeDisqualification.jsx";
+import ResultQualification from "./components/results/ResultQualification.jsx";
 
 const steps = [
   StepYearAndState,
   FieldsStep(individualDataFields),
   StepDependentData,
-  StepHousehold
+  FieldsStep(householdSizeFields)
 ];
 
 const results = {
-  stateDisqualification: ResultStateDisqualification,
-  modifiedAGIDisqualification: ResultModifiedAGIDisqualification,
+  stateDisqualification: ResultQualification,
+  modifiedAGIDisqualification: ResultQualification,
   outOfVITAScopeDisqualification: ResultOutOfVITAScopeDisqualification,
   qualified: ResultQualification
 };
@@ -57,7 +54,7 @@ class App extends Component {
             isHidden={this.props.ui.step === 1}
           />
           <NavStatus
-            numberOfSteps={steps.length-1}
+            numberOfSteps={steps.length - 1}
             activeStep={this.props.ui.step}
             onClick={this.props.navActions.updateStep}
           />
@@ -70,11 +67,11 @@ class App extends Component {
     );
   };
   renderResult = () => {
-    const { type, ...rest } = this.props.ui.result
+    const { type, ...rest } = this.props.ui.result;
     const ResultComponent = results[type];
     return (
       <div className="container result-container">
-        <ResultComponent taxpayerReturn={this.props.taxpayerReturn} {...rest} />
+        <ResultComponent onOverrideOutOfScope={this.props.stepActions.overrideOutOfScope} taxpayerReturn={this.props.taxpayerReturn} {...rest} />
       </div>
     );
   };

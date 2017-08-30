@@ -5,5 +5,5 @@ import results from '../middleware/results';
 import validateSteps from '../middleware/validateSteps';
 
 export default (initialState) => {
-  return createStore(rootReducer, initialState, applyMiddleware(thunk, results, validateSteps));
+  return createStore(rootReducer, initialState, applyMiddleware(thunk, validateSteps, results));
 };

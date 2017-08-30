@@ -123,3 +123,9 @@ export function resetResidenceHistory() {
     type: types.RESET_RESIDENCE_HISTORY
   };
 }
+
+export function overrideOutOfScope() {
+  return {
+    type: types.OVERRIDE_OUT_OF_SCOPE
+  };
+}

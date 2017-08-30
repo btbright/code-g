@@ -11,7 +11,9 @@ export default store => next => action => {
 			store.dispatch({
 				type: types.UPDATE_RESULT,
 				result: {
-					type: 'stateDisqualification'
+					type: 'stateDisqualification',
+					isTaxpayerQualified: false,
+					taxYear: state.taxpayerReturn.taxYear
 				}
 			})
 			return
@@ -33,7 +35,7 @@ export default store => next => action => {
 			}
 		}
 
-		if (hasNonZeroForeignEarnedIncome(state.taxpayerReturn.foreignEarnedIncome)){
+		if (hasNonZeroForeignEarnedIncome(state.taxpayerReturn.foreignEarnedIncome) && !state.ui.hasOutOfScopeOverride){
 			store.dispatch({
 				type: types.UPDATE_RESULT,
 				result: {
