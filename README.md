@@ -10,6 +10,9 @@ This tool is used to determine if a taxpayer is eligible for the Code G exemptio
 ## How to report an issue
 We've worked hard to make sure the app provides accurate results in all cases but if you find an inaccurate result or bug, please let us know by opening an issue here on GitHub. We'll get it fixed as soon as we can. If you are a designed or developer, we'd also love pull requests or suggestions on how to improve the app.
 
+## Privacy
+No data entered into the wizard is saved in any way. The tool is hosted on [github pages](https://pages.github.com/) and does not communicate with any server after the resources needed are downloaded to the browser.
+
 ## How to run this project on your computer
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
