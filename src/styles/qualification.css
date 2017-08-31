@@ -18,3 +18,15 @@
 .taxpayer-fields tr:nth-last-child(3) td {
 	border: none;
 }
+
+.taxpayer-fields {
+	display: none;
+}
+
+.taxpayer-fields.show {
+	display:table;
+}
+
+.qualification-section .toggle-calculations {
+	margin-bottom: 2.5rem;
+}

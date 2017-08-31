@@ -141,3 +141,15 @@ export function toggleVITAUser() {
     type: types.TOGGLE_VITA_USER
   };
 }
+
+export function toggleCalculations() {
+  return {
+    type: types.TOGGLE_CALCULATIONS
+  };
+}
+
+export function resetTool() {
+  return {
+    type: types.RESET_TOOL
+  };
+}

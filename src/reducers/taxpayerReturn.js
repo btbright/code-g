@@ -15,6 +15,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case types.RESET_TOOL:
+      return initialState;
     case types.RESET_RESIDENCE_HISTORY:
       return Object.assign({}, state, { residenceHistory: [] });
     case types.RESIDENCE_HISTORY_STATE_SELECT:

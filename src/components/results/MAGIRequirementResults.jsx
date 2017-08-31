@@ -1,5 +1,6 @@
 import React from "react";
 import { isArray } from "lodash";
+import classnames from "classnames";
 import { resultFields } from "../../constants/taxpayerReturnFields";
 
 export default props => {
@@ -36,7 +37,8 @@ const ResultsBody = props => {
   return (
     <div>
       <RequirementResultsHeader fplPercentage={props.fplPercentage} />
-      <table className="u-full-width taxpayer-fields">
+      <button className="toggle-calculations" onClick={props.onToggleCalculations}>{props.ui.showReturnFields ? "Hide Calculations" : "Show Calculations"}</button>
+      <table className={classnames("u-full-width", "taxpayer-fields", props.ui.showReturnFields && "show")}>
         <thead>
           <tr>
             <th colSpan={3}>Return Fields</th>
@@ -62,7 +64,7 @@ const ResultsBody = props => {
           <tr className="total-row">
             <td>Federal Poverty Line Reference</td>
             <td>
-              for {props.numberOfPeopleInTaxHousehold} people
+              for {props.numberOfPeopleInTaxHousehold} {props.numberOfPeopleInTaxHousehold === "1" ? "person" : "people"}
             </td>
             <td style={{ textAlign: "right" }}>
               {props.referenceFPL}

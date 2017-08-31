@@ -38,11 +38,29 @@ const results = {
   qualified: ResultQualification
 };
 
+const AppFooter = props => <footer>
+                              <p>
+                                <a
+                                  href="https://github.com/btbright/code-g"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  More information
+                                </a>
+                              </p>
+                            </footer>
+
+const AppHeader = props => <header>
+                             <button onClick={props.onResetTool}>Reset</button>
+                             <h1>ACA Code G Exemption</h1>
+                           </header>
+
 class App extends Component {
   renderStep = () => {
     const StepComponent = steps[this.props.ui.step - 1];
     return (
       <div className="container">
+        <AppHeader onResetTool={this.props.stepActions.resetTool} />
         <StepComponent
           ui={this.props.ui}
           taxpayerReturn={this.props.taxpayerReturn}
@@ -69,17 +87,7 @@ class App extends Component {
             isDisabled={false}
           />
         </nav>
-        <footer>
-          <p>
-            <a
-              href="https://github.com/btbright/code-g"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              More information
-            </a>
-          </p>
-        </footer>
+        <AppFooter />
       </div>
     );
   };
@@ -87,12 +95,18 @@ class App extends Component {
     const { type, ...rest } = this.props.ui.result;
     const ResultComponent = results[type];
     return (
-      <div className="container result-container">
-        <ResultComponent
-          onOverrideOutOfScope={this.props.stepActions.overrideOutOfScope}
-          taxpayerReturn={this.props.taxpayerReturn}
-          {...rest}
-        />
+      <div className="container">
+        <AppHeader onResetTool={this.props.stepActions.resetTool} />
+        <div className="result-container">
+          <ResultComponent
+            onToggleCalculations={this.props.stepActions.toggleCalculations}
+            onOverrideOutOfScope={this.props.stepActions.overrideOutOfScope}
+            taxpayerReturn={this.props.taxpayerReturn}
+            ui={this.props.ui}
+            {...rest}
+          />
+          <AppFooter />
+        </div>
       </div>
     );
   };

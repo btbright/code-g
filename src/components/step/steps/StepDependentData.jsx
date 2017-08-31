@@ -23,7 +23,7 @@ export default class StepDependentData extends Component {
               isClaimingDependents ? addDependent() : nextStep()}
           />
           <p style={{ color: "#999" }}>
-            Note: dependents have a filing requirement if they must file a
+            Note: dependents have a filing requirement if they <span style={{textDecoration: "underline"}}>must</span> file a
             return based on earned and/or unearned income. If a dependent is not
             required to file a return but elects to file to get back
             withholding, do not answer yes. Consult Pub 4012 A-2 for dependent
