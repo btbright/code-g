@@ -6,8 +6,7 @@ This tool is used to determine if a taxpayer is eligible for the Code G exemptio
 
 ## Resources used
 The following IRS instructions were used to define Household Income, Modified Adjusted Gross Income, and federal poverty lines:
-Form 8965, Health Coverage Exemptions
-Form 8962, Premium Tax Credit
+Form 8965, Health Coverage Exemptions; Form 8962, Premium Tax Credit
 
 ## How to report an issue
 We've worked hard to make sure the app provides accurate results in all cases but if you find an inaccurate result or bug, please let us know by opening an issue here on GitHub. We'll get it fixed as soon as we can. If you are a designed or developer, we'd also love pull requests or suggestions on how to improve the app.
