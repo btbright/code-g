@@ -10,6 +10,19 @@
 	margin-top: 40px;
 }
 
+.result-controls {
+	height: 38px;
+	line-height: 38px;
+}
+
+.result-controls a {
+	text-decoration: none;
+}
+
+.result-controls a:hover {
+	color: #4bc2e7;
+}
+
 .total-row td {
 	border-top: 1px solid #444;
 	border-bottom: none;

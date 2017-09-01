@@ -12,9 +12,12 @@ export default props =>
       International Certification, you must refer this taxpayer to a
       professional tax preparer.
     </p>
-    <p>
+    <p className="result-controls">
       <button className="u-pull-right" onClick={props.onOverrideOutOfScope}>
         I am certified, continue return
       </button>
+      <a href="#back" onClick={e => {e.preventDefault();props.onBack();}}>
+        Back
+      </a>
     </p>
   </div>;

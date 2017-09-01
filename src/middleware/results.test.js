@@ -30,19 +30,27 @@ describe('results middleware', ()=>{
 
 	describe('hasNonZeroForeignEarnedIncome', ()=>{
 		test('should be false if nothing has been selected', () => {
-			expect(hasNonZeroForeignEarnedIncome()).toBe(false);
+			expect(hasNonZeroForeignEarnedIncome({})).toBe(false);
 		});
 
 		test('should be true if it has a valid value', () => {
-			expect(hasNonZeroForeignEarnedIncome("20")).toBe(true);
+			expect(hasNonZeroForeignEarnedIncome({foreignEarnedIncome: "20"})).toBe(true);
 		});
 
 		test('should be true if it has a valid number value', () => {
-			expect(hasNonZeroForeignEarnedIncome(20)).toBe(true);
+			expect(hasNonZeroForeignEarnedIncome({foreignEarnedIncome: 20})).toBe(true);
 		});
 
 		test('should be false if it is an empty string', () => {
-			expect(hasNonZeroForeignEarnedIncome("")).toBe(false);
+			expect(hasNonZeroForeignEarnedIncome({foreignEarnedIncome: ""})).toBe(false);
+		});
+
+		test('should find dependent foreign earned income', () => {
+			expect(hasNonZeroForeignEarnedIncome({foreignEarnedIncome: "", dependents: [{foreignEarnedIncome: "20"}]})).toBe(true);
+		});
+
+		test('should let zero foreign earned income', () => {
+			expect(hasNonZeroForeignEarnedIncome({foreignEarnedIncome: "", dependents: [{foreignEarnedIncome: "0"}]})).toBe(false);
 		});
 	})
 })

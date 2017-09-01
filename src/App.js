@@ -11,8 +11,8 @@ import "./styles/skeleton.css";
 import "./styles/skeletonOverrides.css";
 import "./App.css";
 
-import AppHeader from './components/AppHeader.jsx';
-import AppFooter from './components/AppFooter.jsx';
+import AppHeader from "./components/AppHeader.jsx";
+import AppFooter from "./components/AppFooter.jsx";
 
 import VITAConfirmation from "./components/nav/VITAConfirmation.jsx";
 import NavStatus from "./components/nav/NavStatus.jsx";
@@ -35,10 +35,31 @@ const steps = [
 ];
 
 const results = {
-  stateDisqualification: ResultQualification,
-  modifiedAGIDisqualification: ResultQualification,
-  outOfVITAScopeDisqualification: ResultOutOfVITAScopeDisqualification,
-  qualified: ResultQualification
+  stateDisqualification: {
+    ResultComponent: ResultQualification,
+    resultActions: {
+      onToggleCalculations: taxpayerReturnActions.toggleCalculations
+    }
+  },
+  modifiedAGIDisqualification: {
+    ResultComponent: ResultQualification,
+    resultActions: {
+      onToggleCalculations: taxpayerReturnActions.toggleCalculations
+    }
+  },
+  outOfVITAScopeDisqualification: {
+    ResultComponent: ResultOutOfVITAScopeDisqualification,
+    resultActions: {
+      onBack: taxpayerReturnActions.clearResult,
+      onOverrideOutOfScope: taxpayerReturnActions.overrideOutOfScope
+    }
+  },
+  qualified: {
+    ResultComponent: ResultQualification,
+    resultActions: {
+      onToggleCalculations: taxpayerReturnActions.toggleCalculations
+    }
+  }
 };
 
 class App extends Component {
@@ -80,16 +101,16 @@ class App extends Component {
   };
   renderResult = () => {
     const { type, ...rest } = this.props.ui.result;
-    const ResultComponent = results[type];
+    const { ResultComponent, resultActions } = results[type];
+    const boundResultActions = bindActionCreators(resultActions, this.props.dispatch);
     return (
       <div className="container">
         <AppHeader onResetTool={this.props.stepActions.resetTool} />
         <div className="result-container">
           <ResultComponent
-            onToggleCalculations={this.props.stepActions.toggleCalculations}
-            onOverrideOutOfScope={this.props.stepActions.overrideOutOfScope}
             taxpayerReturn={this.props.taxpayerReturn}
             ui={this.props.ui}
+            {...boundResultActions}
             {...rest}
           />
           <AppFooter />
@@ -112,7 +133,8 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
   return {
     stepActions: bindActionCreators(taxpayerReturnActions, dispatch),
-    navActions: bindActionCreators(navActions, dispatch)
+    navActions: bindActionCreators(navActions, dispatch),
+    dispatch
   };
 }
 

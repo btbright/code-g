@@ -35,7 +35,7 @@ export default store => next => action => {
 			}
 		}
 
-		if (hasNonZeroForeignEarnedIncome(state.taxpayerReturn.foreignEarnedIncome) && (state.ui.isVITAUser && !state.ui.hasOutOfScopeOverride)){
+		if (hasNonZeroForeignEarnedIncome(state.taxpayerReturn) && (state.ui.isVITAUser && !state.ui.hasOutOfScopeOverride)){
 			store.dispatch({
 				type: types.UPDATE_RESULT,
 				result: {
@@ -49,8 +49,14 @@ export default store => next => action => {
   return next(action)
 }
 
-export function hasNonZeroForeignEarnedIncome(foreignEarnedIncomeValue){
-	const parsed = parseInt(foreignEarnedIncomeValue, 10);
+export function hasNonZeroForeignEarnedIncome({foreignEarnedIncome, dependents}){
+	if (hasNonZeroValue(foreignEarnedIncome)) return true;
+	if (!dependents) return false;
+	return !!dependents.find(dependent => hasNonZeroValue(dependent.foreignEarnedIncome));
+}
+
+function hasNonZeroValue(val){
+	const parsed = parseInt(val, 10);
 	if (isNaN(parsed)) return false;
 	return parsed !== 0;
 }

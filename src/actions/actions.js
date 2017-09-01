@@ -153,3 +153,9 @@ export function resetTool() {
     type: types.RESET_TOOL
   };
 }
+
+export function clearResult() {
+  return {
+    type: types.CLEAR_RESULT
+  }
+}
