@@ -11,6 +11,9 @@ import "./styles/skeleton.css";
 import "./styles/skeletonOverrides.css";
 import "./App.css";
 
+import AppHeader from './components/AppHeader.jsx';
+import AppFooter from './components/AppFooter.jsx';
+
 import VITAConfirmation from "./components/nav/VITAConfirmation.jsx";
 import NavStatus from "./components/nav/NavStatus.jsx";
 
@@ -26,7 +29,7 @@ import ResultQualification from "./components/results/ResultQualification.jsx";
 
 const steps = [
   StepYearAndState,
-  FieldsStep(individualDataFields, "Use Summary/Print page in TaxSlayer"),
+  FieldsStep(individualDataFields),
   StepDependentData,
   FieldsStep(householdSizeFields)
 ];
@@ -38,36 +41,10 @@ const results = {
   qualified: ResultQualification
 };
 
-const AppFooter = props =>
-  <footer>
-    <p>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://docs.google.com/forms/d/e/1FAIpQLScYX1a9kM2IyEwmsP6ycWzWRi9A3P2sTmDLm_XeuDxwX6F4xQ/viewform?usp=sf_link"
-      >
-        Feedback
-      </a>
-      &middot;
-      <a
-        href="https://github.com/btbright/code-g"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        More information
-      </a>
-    </p>
-  </footer>;
-
-const AppHeader = props =>
-  <header>
-    <h1>ACA Code G Exemption</h1>
-    <button onClick={props.onResetTool}>Reset</button>
-  </header>;
-
 class App extends Component {
   renderStep = () => {
     const StepComponent = steps[this.props.ui.step - 1];
+
     return (
       <div className="container">
         <AppHeader onResetTool={this.props.stepActions.resetTool} />
