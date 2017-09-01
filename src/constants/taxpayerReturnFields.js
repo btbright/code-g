@@ -31,6 +31,8 @@ export const fieldTypes = {
 
 export const dependentFields = [
   "AGI",
+  "taxExemptInterest",
+  "foreignEarnedIncome",
   "socialSecurityBenefitsTotal",
   "socialSecurityBenefitsTaxable"
 ];

@@ -57,16 +57,30 @@ export const dependentFields = [
     isRequired: true
   },
   {
+    fieldName: taxpayerReturnFields.taxExemptInterest,
+    promptText:
+      "2. Enter tax-exempt interest (Form 1040, Line 8b)",
+    placeholder: "Tax exempt interest...",
+    isRequired: true
+  },
+  {
+    fieldName: taxpayerReturnFields.foreignEarnedIncome,
+    promptText:
+      "3. Enter foreign earned income (Form 2555, Line 45 + Line 50)",
+    placeholder: "Foreign earned income...",
+    isRequired: true
+  },
+  {
     fieldName: taxpayerReturnFields.socialSecurityBenefitsTotal,
     promptText:
-      "2. Enter dependent’s total amount of social security benefits (Form 1040, Line 20a)",
+      "4. Enter dependent’s total amount of social security benefits (Form 1040, Line 20a)",
     placeholder: "Total social security benefits...",
     isRequired: true
   },
   {
     fieldName: taxpayerReturnFields.socialSecurityBenefitsTaxable,
     promptText:
-      "3. Enter dependent’s taxable social security benefits (Form 1040, Line 20b)",
+      "5. Enter dependent’s taxable social security benefits (Form 1040, Line 20b)",
     placeholder: "Taxable social security benefits...",
     isRequired: true
   }

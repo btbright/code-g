@@ -1,5 +1,6 @@
 import * as types from "../actions/action-types";
 import { difference, union } from "lodash";
+import { dependentFields } from "../constants/taxpayerReturnFields";
 
 const initialState = {
   taxYear: "",
@@ -36,8 +37,10 @@ export default (state = initialState, action) => {
       ];
       return Object.assign({}, state, { dependents: newDependents });
     case types.ADD_DEPENDENT:
+      const emptyDependent = dependentFields.reduce((dependent, field) => {dependent[field] = ""; return dependent}, {});
       return Object.assign({}, state, {
-        dependents: [...state.dependents, {}]
+        //used to avoid react error
+        dependents: [...state.dependents, emptyDependent]
       });
     case types.REMOVE_DEPENDENT:
       return Object.assign({}, state, {

@@ -79,6 +79,8 @@ export function calculateModifiedAGI(taxpayerReturn) {
       return (
         total +
         dependent.AGI +
+        dependent.taxExemptInterest +
+        dependent.foreignEarnedIncome +
         dependent.socialSecurityBenefitsTotal -
         dependent.socialSecurityBenefitsTaxable
       );

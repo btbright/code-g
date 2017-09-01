@@ -10,7 +10,7 @@ const stepIntroText = {
 export default class Step extends Component {
   render() {
     let introText;
-    const introTextInfo = stepIntroText[this.props.ui.step];
+    const introTextInfo = stepIntroText[this.props.ui && this.props.ui.step];
     if (introTextInfo) {
       if (
         !introTextInfo.isVITAOnly ||

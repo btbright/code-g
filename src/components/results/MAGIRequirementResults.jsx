@@ -39,11 +39,6 @@ const ResultsBody = props => {
       <RequirementResultsHeader fplPercentage={props.fplPercentage} />
       <button className="toggle-calculations" onClick={props.onToggleCalculations}>{props.ui.showReturnFields ? "Hide Calculations" : "Show Calculations"}</button>
       <table className={classnames("u-full-width", "taxpayer-fields", props.ui.showReturnFields && "show")}>
-        <thead>
-          <tr>
-            <th colSpan={3}>Return Fields</th>
-          </tr>
-        </thead>
         <tbody>
           {Object.keys(resultFields).sort(dependentsSort).map((fieldKey, i) => {
             const fieldValue = props.parsedTaxpayerReturn[fieldKey];
