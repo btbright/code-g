@@ -38,12 +38,14 @@ const results = {
   stateDisqualification: {
     ResultComponent: ResultQualification,
     resultActions: {
+      onBack: taxpayerReturnActions.clearResult,
       onToggleCalculations: taxpayerReturnActions.toggleCalculations
     }
   },
   modifiedAGIDisqualification: {
     ResultComponent: ResultQualification,
     resultActions: {
+      onBack: taxpayerReturnActions.clearResult,
       onToggleCalculations: taxpayerReturnActions.toggleCalculations
     }
   },
@@ -57,6 +59,7 @@ const results = {
   qualified: {
     ResultComponent: ResultQualification,
     resultActions: {
+      onBack: taxpayerReturnActions.clearResult,
       onToggleCalculations: taxpayerReturnActions.toggleCalculations
     }
   }

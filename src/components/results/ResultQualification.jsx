@@ -28,6 +28,17 @@ export default class QualificationResults extends Component {
         </p>
         <MAGIRequirementResults {...this.props} />
         <StateRequirementResults {...this.props} />
+        <p className="result-controls">
+          <a
+            href="#back"
+            onClick={e => {
+              e.preventDefault();
+              this.props.onBack();
+            }}
+          >
+            Back
+          </a>
+        </p>
       </div>
     );
   }
