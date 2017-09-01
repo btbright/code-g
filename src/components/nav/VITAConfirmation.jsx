@@ -3,13 +3,12 @@ import classnames from "classnames";
 
 export default props =>
   <div className={classnames("vita-confirmation", props.isHidden && "hidden")}>
-    <label
+    <div
       onClick={e => {
-        e.preventDefault();
         props.onVitaConfirmation();
       }}
     >
       <input type="checkbox" checked={props.isVITAUser} readOnly />{" "}
       <span className="label-body">For VITA?</span>
-    </label>
+    </div>
   </div>;

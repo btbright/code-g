@@ -65,7 +65,6 @@ const results = {
 class App extends Component {
   renderStep = () => {
     const StepComponent = steps[this.props.ui.step - 1];
-
     return (
       <div className="container">
         <AppHeader onResetTool={this.props.stepActions.resetTool} />

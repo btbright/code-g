@@ -156,14 +156,16 @@ nav {
 
 .vita-confirmation input {
 	margin: 0 5px 0 0;
+	cursor: pointer;
 }
 
-.vita-confirmation label {
+.vita-confirmation > div {
 	display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
 	font-weight: normal;
+	cursor: pointer;
 }
 
 .vita-confirmation.hidden {
