@@ -35,7 +35,7 @@ $ npm test
 ```
 
 ## How to add a new tax year
-The years for the first question (tax year selection) are generated from the data found in `/src/constants/federalPovertyLineData.js`. To add a new year, add the limits to the `federalPovertyLineLevels` object with a new key for the year you are adding. Also, add the additional amount for family members above 8 to the `additionalFamilyMemberAmounts` object, also keyed by the new year you are adding. The data for these is found *MAE WHERE DOES THIS COME FROM?*
+The years for the first question (tax year selection) are generated from the data found in `/src/constants/federalPovertyLineData.js`. To add a new year, add the limits to the `federalPovertyLineLevels` object with a new key for the year you are adding. Also, add the additional amount for family members above 8 to the `additionalFamilyMemberAmounts` object, also keyed by the new year you are adding. The data for these is found in the IRS instructions for Form 8962.
 
 ## Technical details
 This is a front-end only app, so no taxpayer data entered is saved in any way. It was created with create-react-app and has not been ejected. For details on that process, if needed, see the documentation for CRA below.
