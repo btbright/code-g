@@ -58,15 +58,13 @@ export const dependentFields = [
   },
   {
     fieldName: taxpayerReturnFields.taxExemptInterest,
-    promptText:
-      "2. Enter tax-exempt interest (Form 1040, Line 8b)",
+    promptText: "2. Enter tax-exempt interest (Form 1040, Line 8b)",
     placeholder: "Tax exempt interest...",
     isRequired: true
   },
   {
     fieldName: taxpayerReturnFields.foreignEarnedIncome,
-    promptText:
-      "3. Enter foreign earned income (Form 2555, Line 45 + Line 50)",
+    promptText: "3. Enter foreign earned income (Form 2555, Line 45 + Line 50)",
     placeholder: "Foreign earned income...",
     isRequired: true
   },

@@ -1,7 +1,7 @@
 import React from "react";
 import months from "../../constants/months";
 import { times } from "lodash";
-import '../../styles/MonthSelectionForm.css';
+import "../../styles/MonthSelectionForm.css";
 
 export default props =>
   <div>
@@ -19,7 +19,7 @@ export default props =>
         <div key={i} className="one column">
           <div
             onClick={props.onMonthClick.bind(this, i + 1)}
-						className="month-checkbox"
+            className="month-checkbox"
             key={i}
           >
             <input

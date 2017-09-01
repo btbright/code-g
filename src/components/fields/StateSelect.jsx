@@ -1,7 +1,7 @@
 import React from "react";
-import states from "../../constants/states"
-import { difference } from 'lodash'
-import '../../styles/StateSelect.css'
+import states from "../../constants/states";
+import { difference } from "lodash";
+import "../../styles/StateSelect.css";
 
 export default props =>
   <select
@@ -12,7 +12,10 @@ export default props =>
     <option value="">
       {props.selectText || "Select State"}
     </option>
-    {difference(Object.keys(states), props.statesToExclude).map(stateAbbreviation =>
+    {difference(
+      Object.keys(states),
+      props.statesToExclude
+    ).map(stateAbbreviation =>
       <option key={stateAbbreviation} value={stateAbbreviation}>
         {states[stateAbbreviation]}
       </option>

@@ -47,8 +47,8 @@ describe("ModifiedAGIQualification logic", () => {
             AGI: "1000.00",
             socialSecurityBenefitsTotal: "2340.43",
             socialSecurityBenefitsTaxable: "2929.11",
-				    taxExemptInterest: "0",
-				    foreignEarnedIncome: "0"
+            taxExemptInterest: "0",
+            foreignEarnedIncome: "0"
           }
         ]
       };
@@ -67,8 +67,8 @@ describe("ModifiedAGIQualification logic", () => {
             AGI: 1000.0,
             socialSecurityBenefitsTotal: 2340.43,
             socialSecurityBenefitsTaxable: 2929.11,
-				    taxExemptInterest: 0,
-				    foreignEarnedIncome: 0
+            taxExemptInterest: 0,
+            foreignEarnedIncome: 0
           }
         ]
       };
@@ -107,8 +107,8 @@ describe("ModifiedAGIQualification logic", () => {
             AGI: 1000.0,
             socialSecurityBenefitsTotal: 2340.43,
             socialSecurityBenefitsTaxable: 2929.11,
-				    taxExemptInterest: 0,
-				    foreignEarnedIncome: 0
+            taxExemptInterest: 0,
+            foreignEarnedIncome: 0
           }
         ]
       };

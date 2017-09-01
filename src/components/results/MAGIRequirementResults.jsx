@@ -37,8 +37,19 @@ const ResultsBody = props => {
   return (
     <div>
       <RequirementResultsHeader fplPercentage={props.fplPercentage} />
-      <button className="toggle-calculations" onClick={props.onToggleCalculations}>{props.ui.showReturnFields ? "Hide Calculations" : "Show Calculations"}</button>
-      <table className={classnames("u-full-width", "taxpayer-fields", props.ui.showReturnFields && "show")}>
+      <button
+        className="toggle-calculations"
+        onClick={props.onToggleCalculations}
+      >
+        {props.ui.showReturnFields ? "Hide Calculations" : "Show Calculations"}
+      </button>
+      <table
+        className={classnames(
+          "u-full-width",
+          "taxpayer-fields",
+          props.ui.showReturnFields && "show"
+        )}
+      >
         <tbody>
           {Object.keys(resultFields).sort(dependentsSort).map((fieldKey, i) => {
             const fieldValue = props.parsedTaxpayerReturn[fieldKey];
@@ -59,7 +70,8 @@ const ResultsBody = props => {
           <tr className="total-row">
             <td>Federal Poverty Line Reference</td>
             <td>
-              for {props.numberOfPeopleInTaxHousehold} {props.numberOfPeopleInTaxHousehold === "1" ? "person" : "people"}
+              for {props.numberOfPeopleInTaxHousehold}{" "}
+              {props.numberOfPeopleInTaxHousehold === "1" ? "person" : "people"}
             </td>
             <td style={{ textAlign: "right" }}>
               {props.referenceFPL}

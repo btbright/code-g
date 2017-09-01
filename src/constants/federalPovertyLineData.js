@@ -31,7 +31,6 @@ export const federalPovertyLineLevels = {
   }
 };
 
-
 export const additionalFamilyMemberAmounts = {
   "2016": 4160,
   "2015": 4060,

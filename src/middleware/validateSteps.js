@@ -23,12 +23,12 @@ export default store => next => action => {
   const invalidlyMissingValueFieldNames = requiredFields.reduce(
     (invalidFieldNames, field) => {
       //check all dependents
-      if (state.ui.step === 3){
+      if (state.ui.step === 3) {
         state.taxpayerReturn.dependents.forEach((dependent, i) => {
           if (isEmptyValue(dependent[field.fieldName])) {
             invalidFieldNames.push(`dependent:${i}:${field.fieldName}`);
           }
-        })
+        });
       } else {
         if (isEmptyValue(state.taxpayerReturn[field.fieldName])) {
           invalidFieldNames.push(field.fieldName);
@@ -39,9 +39,12 @@ export default store => next => action => {
     []
   );
 
-  const validFields = difference(requiredFields.map(field => field.fieldName), invalidlyMissingValueFieldNames);
+  const validFields = difference(
+    requiredFields.map(field => field.fieldName),
+    invalidlyMissingValueFieldNames
+  );
 
-  if (validFields.length !== 0){
+  if (validFields.length !== 0) {
     store.dispatch({
       type: types.REMOVE_INVALID_FIELDS,
       fieldNames: validFields

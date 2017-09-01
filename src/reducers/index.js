@@ -21,15 +21,17 @@ export function getUI(state) {
   return state.ui;
 }
 
-export function decorateFieldsWithState(fields, taxpayerReturn, ui){
+export function decorateFieldsWithState(fields, taxpayerReturn, ui) {
   return fields.map(field => {
-    const error = ui.invalidFields.find(errorField => errorField.fieldName === field.fieldName);
+    const error = ui.invalidFields.find(
+      errorField => errorField.fieldName === field.fieldName
+    );
     return Object.assign({}, field, {
       value: taxpayerReturn[field.fieldName],
       hasError: !!error,
       errorText: error ? error.errorText : ""
-    })
-  })
+    });
+  });
 }
 
 //utility function that filters expansion/non-expansion selected states

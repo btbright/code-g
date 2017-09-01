@@ -37,7 +37,10 @@ export default (state = initialState, action) => {
       ];
       return Object.assign({}, state, { dependents: newDependents });
     case types.ADD_DEPENDENT:
-      const emptyDependent = dependentFields.reduce((dependent, field) => {dependent[field] = ""; return dependent}, {});
+      const emptyDependent = dependentFields.reduce((dependent, field) => {
+        dependent[field] = "";
+        return dependent;
+      }, {});
       return Object.assign({}, state, {
         //used to avoid react error
         dependents: [...state.dependents, emptyDependent]

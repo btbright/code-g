@@ -16,7 +16,13 @@ export default props =>
       <button className="u-pull-right" onClick={props.onOverrideOutOfScope}>
         I am certified, continue return
       </button>
-      <a href="#back" onClick={e => {e.preventDefault();props.onBack();}}>
+      <a
+        href="#back"
+        onClick={e => {
+          e.preventDefault();
+          props.onBack();
+        }}
+      >
         Back
       </a>
     </p>

@@ -13,8 +13,8 @@ export const returnTests = [
         AGI: "7800",
         socialSecurityBenefitsTotal: "2600",
         socialSecurityBenefitsTaxable: "2500",
-		    taxExemptInterest: "0",
-		    foreignEarnedIncome: "0"
+        taxExemptInterest: "0",
+        foreignEarnedIncome: "0"
       }
     ],
     result: { fplPercentage: 139.99, isTaxpayerQualified: false }
@@ -45,8 +45,8 @@ export const returnTests = [
         AGI: "1250",
         socialSecurityBenefitsTotal: "0",
         socialSecurityBenefitsTaxable: "0",
-		    taxExemptInterest: "0",
-		    foreignEarnedIncome: "0"
+        taxExemptInterest: "0",
+        foreignEarnedIncome: "0"
       }
     ],
     result: { fplPercentage: 173.85, isTaxpayerQualified: false }
@@ -65,8 +65,8 @@ export const returnTests = [
         AGI: "1300",
         socialSecurityBenefitsTotal: "4000",
         socialSecurityBenefitsTaxable: "3700",
-		    taxExemptInterest: "0",
-		    foreignEarnedIncome: "0"
+        taxExemptInterest: "0",
+        foreignEarnedIncome: "0"
       }
     ],
     result: { fplPercentage: 97.11, isTaxpayerQualified: true }
@@ -85,8 +85,8 @@ export const returnTests = [
         AGI: "6500",
         socialSecurityBenefitsTotal: "0",
         socialSecurityBenefitsTaxable: "0",
-		    taxExemptInterest: "0",
-		    foreignEarnedIncome: "0"
+        taxExemptInterest: "0",
+        foreignEarnedIncome: "0"
       }
     ],
     result: { fplPercentage: 105.41, isTaxpayerQualified: true }
@@ -117,8 +117,8 @@ export const returnTests = [
         AGI: "0",
         socialSecurityBenefitsTotal: "4000",
         socialSecurityBenefitsTaxable: "0",
-		    taxExemptInterest: "0",
-		    foreignEarnedIncome: "0"
+        taxExemptInterest: "0",
+        foreignEarnedIncome: "0"
       }
     ],
     result: { fplPercentage: 147.49, isTaxpayerQualified: false }
@@ -137,8 +137,8 @@ export const returnTests = [
         AGI: "6400",
         socialSecurityBenefitsTotal: "0",
         socialSecurityBenefitsTaxable: "0",
-		    taxExemptInterest: "0",
-		    foreignEarnedIncome: "0"
+        taxExemptInterest: "0",
+        foreignEarnedIncome: "0"
       }
     ],
     result: { fplPercentage: 187, isTaxpayerQualified: false }
@@ -157,8 +157,8 @@ export const returnTests = [
         AGI: "0",
         socialSecurityBenefitsTotal: "4300",
         socialSecurityBenefitsTaxable: "3900",
-		    taxExemptInterest: "0",
-		    foreignEarnedIncome: "0"
+        taxExemptInterest: "0",
+        foreignEarnedIncome: "0"
       }
     ],
     result: { fplPercentage: 135.88, isTaxpayerQualified: true }
@@ -177,8 +177,8 @@ export const returnTests = [
         AGI: "6400",
         socialSecurityBenefitsTotal: "0",
         socialSecurityBenefitsTaxable: "0",
-		    taxExemptInterest: "0",
-		    foreignEarnedIncome: "0"
+        taxExemptInterest: "0",
+        foreignEarnedIncome: "0"
       }
     ],
     result: { fplPercentage: 157.42, isTaxpayerQualified: false }
@@ -209,8 +209,8 @@ export const returnTests = [
         AGI: "2500",
         socialSecurityBenefitsTotal: "0",
         socialSecurityBenefitsTaxable: "0",
-		    taxExemptInterest: "0",
-		    foreignEarnedIncome: "0"
+        taxExemptInterest: "0",
+        foreignEarnedIncome: "0"
       }
     ],
     result: { fplPercentage: 145.33, isTaxpayerQualified: false }

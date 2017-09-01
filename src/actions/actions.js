@@ -15,26 +15,29 @@ const rules = {
 function runValidationRule(validationRuleName, fieldValue) {
   const rule = rules[validationRuleName];
   const isValid = rule.getIsValid(fieldValue);
-  let errorText
-  if (!isValid){
+  let errorText;
+  if (!isValid) {
     errorText = rule.errorText;
   }
-  return {isValid, errorText}
+  return { isValid, errorText };
 }
 
 export function updateTaxpayerReturnField(fieldName, fieldValue) {
   return dispatch => {
     const validationRuleName = validationRules[fieldName];
     if (validationRuleName && fieldValue !== "") {
-      const {isValid, errorText} = runValidationRule(validationRuleName, fieldValue);
+      const { isValid, errorText } = runValidationRule(
+        validationRuleName,
+        fieldValue
+      );
       const type = isValid
         ? types.REMOVE_INVALID_FIELD
         : types.ADD_INVALID_FIELD;
       const action = {
         type,
         fieldName
-      }
-      if (!isValid){
+      };
+      if (!isValid) {
         action.errorText = errorText;
       }
       dispatch(action);
@@ -52,15 +55,18 @@ export function updateDependentField(index, fieldName, fieldValue) {
   return dispatch => {
     const validationRuleName = validationRules[fieldName];
     if (validationRuleName && fieldValue !== "") {
-      const {isValid, errorText} = runValidationRule(validationRuleName, fieldValue);
+      const { isValid, errorText } = runValidationRule(
+        validationRuleName,
+        fieldValue
+      );
       const type = isValid
         ? types.REMOVE_INVALID_FIELD
         : types.ADD_INVALID_FIELD;
       const action = {
         type,
         fieldName: `dependent:${index}:${fieldName}`
-      }
-      if (!isValid){
+      };
+      if (!isValid) {
         action.errorText = errorText;
       }
       dispatch(action);
@@ -121,7 +127,7 @@ export function confirmSingleState(isConfirmedSingleState) {
       type: types.CONFIRM_SINGLE_STATE,
       isConfirmedSingleState
     });
-  }
+  };
 }
 
 export function resetResidenceHistory() {
@@ -157,5 +163,5 @@ export function resetTool() {
 export function clearResult() {
   return {
     type: types.CLEAR_RESULT
-  }
+  };
 }

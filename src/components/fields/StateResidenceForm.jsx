@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import StateSelect from "./StateSelect.jsx";
 import MonthSelectionForm from "./MonthSelectionForm.jsx";
 import states from "../../constants/states";
-import '../../styles/StateResidenceForm.css'
+import "../../styles/StateResidenceForm.css";
 
 export default class StateResidenceForm extends Component {
   handleConfirmationClick = isConfirmed => e => {
     e.preventDefault();
-    this.props.onConfirmAdditionalStates(isConfirmed)
-  }
+    this.props.onConfirmAdditionalStates(isConfirmed);
+  };
   render() {
     const shouldShowConfirmation = this.props.shouldPromptConfirmation;
     return (
@@ -18,7 +18,8 @@ export default class StateResidenceForm extends Component {
             selectedStateAbbreviation={this.props.selectedStateAbbreviation}
             statesToExclude={this.props.statesToExclude}
             selectText={this.props.selectStateText}
-            onChange={this.props.onStateSelect} />
+            onChange={this.props.onStateSelect}
+          />
         </div>
         <div
           className="nine columns"
@@ -26,7 +27,12 @@ export default class StateResidenceForm extends Component {
         >
           <div
             className="month-selection animate-opacity"
-            style={{ opacity: this.props.shouldShowMonthSelection ? 1 : 0, pointerEvents: this.props.shouldShowMonthSelection ? 'auto' : 'none' }}
+            style={{
+              opacity: this.props.shouldShowMonthSelection ? 1 : 0,
+              pointerEvents: this.props.shouldShowMonthSelection
+                ? "auto"
+                : "none"
+            }}
           >
             <MonthSelectionForm
               months={this.props.months}
@@ -42,11 +48,12 @@ export default class StateResidenceForm extends Component {
             }}
           >
             <p>
-              Did you live in {states[this.props.selectedStateAbbreviation]} all year?
+              Did you live in {states[this.props.selectedStateAbbreviation]} all
+              year?
               <a
                 onClick={this.handleConfirmationClick(true)}
                 className="button confirmation-option"
-                style={{marginLeft: 16}}
+                style={{ marginLeft: 16 }}
                 href="#yes"
               >
                 Yes

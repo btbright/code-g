@@ -4,16 +4,14 @@ import StateRequirementResults from "./StateRequirementResults.jsx";
 import MAGIRequirementResults from "./MAGIRequirementResults.jsx";
 import "../../styles/qualification.css";
 
-const SuccessResultHeader = props => (
+const SuccessResultHeader = props =>
   <h1>
     <span style={{ color: "green" }}>&#x2714;</span>&nbsp;&nbsp;You Qualify
-  </h1>
-);
-const FailureResultHeader = props => (
+  </h1>;
+const FailureResultHeader = props =>
   <h1>
     <span style={{ color: "red" }}>&#x2716;</span>&nbsp;&nbsp;You Do Not Qualify
-  </h1>
-);
+  </h1>;
 
 export default class QualificationResults extends Component {
   render() {

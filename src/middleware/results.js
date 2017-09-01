@@ -1,75 +1,104 @@
-import * as types from '../actions/action-types';
-import { statesThatDidNotExpandMedicare } from '../constants/states'
-import { getSelectedStateAbbreviations } from '../reducers'
-import { getModifiedAGIQualificationResult } from '../logic/modifiedAGIQualification'
+import * as types from "../actions/action-types";
+import { statesThatDidNotExpandMedicare } from "../constants/states";
+import { getSelectedStateAbbreviations } from "../reducers";
+import { getModifiedAGIQualificationResult } from "../logic/modifiedAGIQualification";
 
 export default store => next => action => {
-	const state = store.getState();
+  const state = store.getState();
 
-	if (action.type === types.UPDATE_STEP || (action.type === types.CONFIRM_SINGLE_STATE && action.isConfirmedSingleState)){
-		if (isStateDisqualification(state.taxpayerReturn.residenceHistory, action.isConfirmedSingleState)){
-			store.dispatch({
-				type: types.UPDATE_RESULT,
-				result: {
-					type: 'stateDisqualification',
-					isTaxpayerQualified: false,
-					taxYear: state.taxpayerReturn.taxYear
-				}
-			})
-			return
-		}
-	}
+  if (
+    action.type === types.UPDATE_STEP ||
+    (action.type === types.CONFIRM_SINGLE_STATE &&
+      action.isConfirmedSingleState)
+  ) {
+    if (
+      isStateDisqualification(
+        state.taxpayerReturn.residenceHistory,
+        action.isConfirmedSingleState
+      )
+    ) {
+      store.dispatch({
+        type: types.UPDATE_RESULT,
+        result: {
+          type: "stateDisqualification",
+          isTaxpayerQualified: false,
+          taxYear: state.taxpayerReturn.taxYear
+        }
+      });
+      return;
+    }
+  }
 
-	if (action.type === types.UPDATE_STEP){
-		if (state.ui.invalidFields.length === 0){
-			const result = getModifiedAGIQualificationResult(state.taxpayerReturn)
-			if (result){
-				const type = result.isTaxpayerQualified ? "qualified" : "modifiedAGIDisqualification"
-				const residenceHistoryStateKeys = getSelectedStateAbbreviations(state).nonExpansion;
-				const taxYear = state.taxpayerReturn.taxYear
-				store.dispatch({
-					type: types.UPDATE_RESULT,
-					result: Object.assign({type, residenceHistoryStateKeys, taxYear}, result)
-				})
-				return
-			}
-		}
+  if (action.type === types.UPDATE_STEP) {
+    if (state.ui.invalidFields.length === 0) {
+      const result = getModifiedAGIQualificationResult(state.taxpayerReturn);
+      if (result) {
+        const type = result.isTaxpayerQualified
+          ? "qualified"
+          : "modifiedAGIDisqualification";
+        const residenceHistoryStateKeys = getSelectedStateAbbreviations(state)
+          .nonExpansion;
+        const taxYear = state.taxpayerReturn.taxYear;
+        store.dispatch({
+          type: types.UPDATE_RESULT,
+          result: Object.assign(
+            { type, residenceHistoryStateKeys, taxYear },
+            result
+          )
+        });
+        return;
+      }
+    }
 
-		if (hasNonZeroForeignEarnedIncome(state.taxpayerReturn) && (state.ui.isVITAUser && !state.ui.hasOutOfScopeOverride)){
-			store.dispatch({
-				type: types.UPDATE_RESULT,
-				result: {
-					type: 'outOfVITAScopeDisqualification'
-				}
-			})
-			return
-		}
-	}
+    if (
+      hasNonZeroForeignEarnedIncome(state.taxpayerReturn) &&
+      (state.ui.isVITAUser && !state.ui.hasOutOfScopeOverride)
+    ) {
+      store.dispatch({
+        type: types.UPDATE_RESULT,
+        result: {
+          type: "outOfVITAScopeDisqualification"
+        }
+      });
+      return;
+    }
+  }
 
-  return next(action)
+  return next(action);
+};
+
+export function hasNonZeroForeignEarnedIncome({
+  foreignEarnedIncome,
+  dependents
+}) {
+  if (hasNonZeroValue(foreignEarnedIncome)) return true;
+  if (!dependents) return false;
+  return !!dependents.find(dependent =>
+    hasNonZeroValue(dependent.foreignEarnedIncome)
+  );
 }
 
-export function hasNonZeroForeignEarnedIncome({foreignEarnedIncome, dependents}){
-	if (hasNonZeroValue(foreignEarnedIncome)) return true;
-	if (!dependents) return false;
-	return !!dependents.find(dependent => hasNonZeroValue(dependent.foreignEarnedIncome));
+function hasNonZeroValue(val) {
+  const parsed = parseInt(val, 10);
+  if (isNaN(parsed)) return false;
+  return parsed !== 0;
 }
 
-function hasNonZeroValue(val){
-	const parsed = parseInt(val, 10);
-	if (isNaN(parsed)) return false;
-	return parsed !== 0;
-}
-
-export function isStateDisqualification(residenceHistory, isConfirmedSingleState = false) {
+export function isStateDisqualification(
+  residenceHistory,
+  isConfirmedSingleState = false
+) {
   if (residenceHistory.length === 0) return false;
 
   const selectedStates = residenceHistory
-    .filter(state => (state.months.length !== 0 || isConfirmedSingleState))
+    .filter(state => state.months.length !== 0 || isConfirmedSingleState)
     .map(state => state.stateAbbreviation);
 
   const invalidSelectedStates = selectedStates.filter(
     state => statesThatDidNotExpandMedicare.indexOf(state) === -1
   );
-  return selectedStates.length !== 0 && selectedStates.length === invalidSelectedStates.length;
+  return (
+    selectedStates.length !== 0 &&
+    selectedStates.length === invalidSelectedStates.length
+  );
 }
