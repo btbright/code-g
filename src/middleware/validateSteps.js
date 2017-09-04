@@ -1,6 +1,6 @@
 import * as types from "../actions/action-types";
 import stepFields from "../constants/steps";
-import { isArray, difference } from "lodash";
+import { isArray, difference, flatten, uniq } from "lodash";
 
 export default store => next => action => {
   const state = store.getState();
@@ -29,6 +29,11 @@ export default store => next => action => {
             invalidFieldNames.push(`dependent:${i}:${field.fieldName}`);
           }
         });
+      } else if (
+        field.fieldName === "residenceHistory" &&
+        isResidenceHistoryIncomplete(state.taxpayerReturn[field.fieldName])
+      ) {
+        invalidFieldNames.push(field.fieldName);
       } else {
         if (isEmptyValue(state.taxpayerReturn[field.fieldName])) {
           invalidFieldNames.push(field.fieldName);
@@ -65,6 +70,14 @@ export default store => next => action => {
 
   return next(action);
 };
+
+function isResidenceHistoryIncomplete(residenceHistory) {
+  if (!residenceHistory || residenceHistory.length === 0) return true;
+  const uniqueSelectedMonths = uniq(
+    flatten(residenceHistory.map(s => s.months))
+  );
+  return uniqueSelectedMonths.length !== 12;
+}
 
 function isEmptyValue(fieldValue) {
   if (fieldValue === "" || typeof fieldValue === "undefined") return true;

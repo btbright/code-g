@@ -29,8 +29,8 @@ export default store => next => action => {
     }
   }
 
-  if (action.type === types.UPDATE_STEP && state.ui.step === 4 && action.increment === 1) {
-    if (state.ui.invalidFields.length === 0) {
+  if (action.type === types.UPDATE_STEP) {
+    if (state.ui.invalidFields.length === 0 && state.ui.step === 4 && action.increment === 1) {
       const result = getModifiedAGIQualificationResult(state.taxpayerReturn);
       if (result) {
         const type = result.isTaxpayerQualified
