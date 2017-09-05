@@ -64,6 +64,11 @@ nav {
 	max-width: 80%;
 	width:100%;
 	bottom:20px;
+	left: 10%;
+}
+
+nav > .main {
+	width:100%;
 	display: flex;
 	justify-content: space-between;
   align-items: center;
@@ -131,7 +136,7 @@ nav {
   justify-content: center;
   align-items: center;
   color: rgba(0,0,0,.3);
-  font-size: .3rem;
+  font-size: 9px;
 	cursor: pointer;
 }
 
@@ -177,9 +182,10 @@ footer {
 	position: absolute;
 	bottom: 5px;
 	width: 100%;
-	max-width: 80%;
 	display: flex;
 	justify-content: center;
+	left: 0px;
+	right: 0px;
 }
 
 footer p {
@@ -199,6 +205,7 @@ footer p a {
 		position: relative;
 		margin-top:100px;
 		bottom: auto;
+		left: auto;
 	}
 }
 

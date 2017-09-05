@@ -83,19 +83,21 @@ class App extends Component {
             onVitaConfirmation={this.props.stepActions.toggleVITAUser}
             isHidden={this.props.ui.step !== 1}
           />
-          <PrevStepButton
-            onClick={this.props.navActions.previousStep}
-            isHidden={this.props.ui.step === 1}
-          />
-          <NavStatus
-            numberOfSteps={steps.length - 1}
-            activeStep={this.props.ui.step}
-            onClick={this.props.navActions.updateStep}
-          />
-          <NextStepButton
-            onClick={this.props.navActions.nextStep}
-            isDisabled={false}
-          />
+          <div className="main">
+            <PrevStepButton
+              onClick={this.props.navActions.previousStep}
+              isHidden={this.props.ui.step === 1}
+            />
+            <NavStatus
+              numberOfSteps={steps.length - 1}
+              activeStep={this.props.ui.step}
+              onClick={this.props.navActions.updateStep}
+            />
+            <NextStepButton
+              onClick={this.props.navActions.nextStep}
+              isDisabled={false}
+            />
+          </div>
         </nav>
         <AppFooter />
       </div>
