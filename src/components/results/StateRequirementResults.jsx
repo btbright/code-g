@@ -5,14 +5,14 @@ import states, { statesThatDidNotExpandMedicare } from "../../constants/states";
 const MeetsRequirementsResults = ({ residenceHistoryStateKeys }) =>
   <p className="qualification-status qualification-success">
     <span style={{ color: "green" }}>&#x2714;</span>&nbsp;&nbsp;Since you lived
-    in {maybePluralizedState(residenceHistoryStateKeys)} that expanded medicaid,
+    in {maybePluralizedState(residenceHistoryStateKeys)} that did not expand medicaid,
     you meet this requirement.
   </p>;
 
 const DoesNotMeetRequirementsResults = props =>
   <p className="qualification-status">
-    <span style={{ color: "red" }}>&#x2716;</span>&nbsp;&nbsp;Since you did not
-    live in a state that expanded medicaid, you do not meet this requirement.
+    <span style={{ color: "red" }}>&#x2716;</span>&nbsp;&nbsp;Since you did lived in a state
+    that expanded medicaid, you do not meet this requirement.
   </p>;
 
 export default props => {
