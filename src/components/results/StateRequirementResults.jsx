@@ -11,7 +11,7 @@ const MeetsRequirementsResults = ({ residenceHistoryStateKeys }) =>
 
 const DoesNotMeetRequirementsResults = props =>
   <p className="qualification-status">
-    <span style={{ color: "red" }}>&#x2716;</span>&nbsp;&nbsp;Since you did lived in a state
+    <span style={{ color: "red" }}>&#x2716;</span>&nbsp;&nbsp;Since you lived in a state
     that expanded medicaid, you do not meet this requirement.
   </p>;
 
