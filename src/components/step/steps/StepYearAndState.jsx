@@ -55,6 +55,7 @@ export default class StepYearAndState extends Component {
 					<div id="taxYearStates">
 						{times(numberOfStatesToShow, i => {
 							const state = this.props.taxpayerReturn.residenceHistory[i]
+							const shouldEnableResidenceForm = !!this.props.taxpayerReturn.taxYear;
 							const shouldPromptConfirmation = i === 0 && state && state.stateAbbreviation && typeof this.props.ui.isConfirmedSingleState === "undefined"
 							const shouldShowMonthSelection = (i !== 0 && state && !!state.stateAbbreviation) ||  (i===0 && typeof this.props.ui.isConfirmedSingleState !== "undefined")
 							const statesToExclude = difference(this.props.taxpayerReturn.residenceHistory.map(st => st.stateAbbreviation), state ? [state.stateAbbreviation] : [])
@@ -71,6 +72,7 @@ export default class StepYearAndState extends Component {
 									selectedStateAbbreviation={state ? state.stateAbbreviation : "" }
 									shouldShowMonthSelection={shouldShowMonthSelection}
 									shouldPromptConfirmation={shouldPromptConfirmation}
+									shouldEnableResidenceForm={shouldEnableResidenceForm}
 								/>
 							);
 						})}

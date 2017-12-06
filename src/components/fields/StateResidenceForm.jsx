@@ -16,6 +16,7 @@ export default class StateResidenceForm extends Component {
         <div className="three columns">
           <StateSelect
             selectedStateAbbreviation={this.props.selectedStateAbbreviation}
+            isEnabled={this.props.shouldEnableResidenceForm}
             statesToExclude={this.props.statesToExclude}
             selectText={this.props.selectStateText}
             onChange={this.props.onStateSelect}

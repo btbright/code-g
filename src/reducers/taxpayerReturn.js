@@ -53,6 +53,16 @@ export default (state = initialState, action) => {
         ]
       });
     case types.UPDATE_TAXPAYER_RETURN_FIELD:
+      //if removing the tax year, also remove residence history
+      //because we run qualification logic on it that will break
+      //if the tax year isn't selected
+      if (action.fieldName === "taxYear" && !!state.taxYear && action.fieldValue === ""){
+        return Object.assign({}, state, {
+          taxYear: "",
+          residenceHistory: []
+        });
+      }
+
       return Object.assign({}, state, {
         [action.fieldName]: action.fieldValue
       });

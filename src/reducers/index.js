@@ -39,13 +39,15 @@ export function decorateFieldsWithState(fields, taxpayerReturn, ui) {
 function getSelectedStateObjects(state, transformation = x => x) {
   const selectedStates = state.taxpayerReturn.residenceHistory;
 
+  const taxYearNonExpansionStates = statesThatDidNotExpandMedicare[state.taxpayerReturn.taxYear];
+
   const nonExpansion = selectedStates.filter(
     state =>
-      statesThatDidNotExpandMedicare.indexOf(state.stateAbbreviation) !== -1
+    taxYearNonExpansionStates.indexOf(state.stateAbbreviation) !== -1
   );
   const expansion = selectedStates.filter(
     state =>
-      statesThatDidNotExpandMedicare.indexOf(state.stateAbbreviation) === -1
+    taxYearNonExpansionStates.indexOf(state.stateAbbreviation) === -1
   );
   return {
     nonExpansion: transformation(nonExpansion),

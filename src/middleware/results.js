@@ -13,6 +13,7 @@ export default store => next => action => {
   ) {
     if (
       isStateDisqualification(
+        state.taxpayerReturn.taxYear,
         state.taxpayerReturn.residenceHistory,
         action.isConfirmedSingleState
       )
@@ -85,6 +86,7 @@ function hasNonZeroValue(val) {
 }
 
 export function isStateDisqualification(
+  taxYear,
   residenceHistory,
   isConfirmedSingleState = false
 ) {
@@ -95,7 +97,7 @@ export function isStateDisqualification(
     .map(state => state.stateAbbreviation);
 
   const invalidSelectedStates = selectedStates.filter(
-    state => statesThatDidNotExpandMedicare.indexOf(state) === -1
+    state => statesThatDidNotExpandMedicare[taxYear].indexOf(state) === -1
   );
   return (
     selectedStates.length !== 0 &&

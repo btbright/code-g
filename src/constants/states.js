@@ -52,8 +52,17 @@ export default {
   DC: "District of Columbia"
 };
 
-export const statesThatDidNotExpandMedicare = [
-	"AL", "FL", "GA", "ID", "KS", "LA", "ME",
-	"MS", "MI", "NE", "NC", "OK", "SC", "SD",
-	"TN", "TX", "UT", "VA", "WI", "WY"
-];
+export const statesThatDidNotExpandMedicare = {
+  "2017" : ["AL", "FL", "GA", "ID", "KS", "ME",
+            "MS", "MI", "NE", "NC", "OK", "SC", "SD",
+            "TN", "TX", "UT", "VA", "WI", "WY"],
+  "2016" : ["AL", "FL", "GA", "ID", "KS", "LA", "ME",
+            "MS", "MI", "NE", "NC", "OK", "SC", "SD",
+            "TN", "TX", "UT", "VA", "WI", "WY"],
+  "2015" : ["AL", "FL", "GA", "ID", "KS", "LA", "ME",
+            "MS", "MI", "NE", "NC", "OK", "SC", "SD",
+            "TN", "TX", "UT", "VA", "WI", "WY"],
+	"2014" : ["AL", "FL", "GA", "ID", "KS", "LA", "ME",
+            "MS", "MI", "NE", "NC", "OK", "SC", "SD",
+            "TN", "TX", "UT", "VA", "WI", "WY"]
+};

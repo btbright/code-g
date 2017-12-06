@@ -4,6 +4,7 @@ describe("getSelectedStateAbbreviations", () => {
   test("generate lists of correct expansion and non-expansion states", () => {
     const testData = {
       taxpayerReturn: {
+        taxYear: "2016",
         residenceHistory: [
           { stateAbbreviation: "AL" },
           { stateAbbreviation: "AZ" },
@@ -21,6 +22,7 @@ describe("getSelectedMonths", () => {
   test("generate lists of correct expansion and non-expansion months", () => {
     const testData = {
       taxpayerReturn: {
+        taxYear: "2016",
         residenceHistory: [
           { stateAbbreviation: "AL", months: [1, 2, 3] },
           { stateAbbreviation: "AZ", months: [4, 5, 6, 7] },
