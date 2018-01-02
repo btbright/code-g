@@ -19,7 +19,7 @@ export const federalPovertyLineLevels = {
     "7": 36730,
     "8": 40890
   },
-  "2015ALL": {
+  "2015All": {
     "1": 11670,
     "2": 15730,
     "3": 19790,
@@ -39,7 +39,7 @@ export const federalPovertyLineLevels = {
     "7": 45060,
     "8": 50140
   },
-  "2014ALL": {
+  "2014All": {
     "1": 11490,
     "2": 15510,
     "3": 19530,
@@ -65,8 +65,8 @@ export const federalPovertyLineLevels = {
 export const additionalFamilyMemberAmounts = {
   "2017": 4160,
   "2016": 4160,
-  "2015ALL": 4060,
+  "2015All": 4060,
   "2015AK": 5080,
-  "2014ALL": 4020,
+  "2014All": 4020,
   "2014AK": 5030
 };
