@@ -1,5 +1,5 @@
 import * as types from "../actions/action-types";
-import { statesThatDidNotExpandMedicare } from "../constants/states";
+import { statesThatDidNotExpandMedicaid } from "../constants/states";
 import { getSelectedStateAbbreviations } from "../reducers";
 import { getModifiedAGIQualificationResult } from "../logic/modifiedAGIQualification";
 
@@ -97,7 +97,7 @@ export function isStateDisqualification(
     .map(state => state.stateAbbreviation);
 
   const invalidSelectedStates = selectedStates.filter(
-    state => statesThatDidNotExpandMedicare[taxYear].indexOf(state) === -1
+    state => statesThatDidNotExpandMedicaid[taxYear].indexOf(state) === -1
   );
   return (
     selectedStates.length !== 0 &&

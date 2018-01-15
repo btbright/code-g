@@ -52,17 +52,9 @@ export default {
   DC: "District of Columbia"
 };
 
-export const statesThatDidNotExpandMedicare = {
-  "2017" : ["AL", "FL", "GA", "ID", "KS", "ME",
-            "MS", "MI", "NE", "NC", "OK", "SC", "SD",
-            "TN", "TX", "UT", "VA", "WI", "WY"],
-  "2016" : ["AL", "FL", "GA", "ID", "KS", "LA", "ME",
-            "MS", "MI", "NE", "NC", "OK", "SC", "SD",
-            "TN", "TX", "UT", "VA", "WI", "WY"],
-  "2015" : ["AL", "FL", "GA", "ID", "KS", "LA", "ME",
-            "MS", "MI", "NE", "NC", "OK", "SC", "SD",
-            "TN", "TX", "UT", "VA", "WI", "WY"],
-	"2014" : ["AL", "FL", "GA", "ID", "KS", "LA", "ME",
-            "MS", "MI", "NE", "NC", "OK", "SC", "SD",
-            "TN", "TX", "UT", "VA", "WI", "WY"]
+export const statesThatDidNotExpandMedicaid = {
+  "2017" : ["AL", "FL", "GA", "ID", "KS", "ME", "MO","MS", "NC", "NE", "OK", "SC", "SD", "TN","TX", "UT", "VA", "WY", "WI"],
+  "2016" : ["AL", "FL", "GA", "ID", "KS", "LA", "ME","MO", "MS", "NC", "NE", "OK", "SC", "SD","TN", "TX", "UT", "VA", "WY", "WI"],
+  "2015" : ["AL", "AK", "FL", "GA", "ID", "IN", "KS","LA", "ME", "MO", "MS", "MT", "NC", "NE","OK", "SC", "SD", "TN", "TX", "UT", "VA","WY", "WI"],
+  "2014" : ["AL", "AK", "FL", "GA", "ID", "IN", "KS","LA", "ME", "MO", "MS", "MT", "NC", "NE","NH", "OK", "PA", "SC", "SD", "TN", "TX","UT", "VA", "WY", "WI"]
 };

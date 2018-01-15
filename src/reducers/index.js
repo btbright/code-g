@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import taxpayerReturn from "./taxpayerReturn";
 import ui from "./ui";
-import { statesThatDidNotExpandMedicare } from "../constants/states";
+import { statesThatDidNotExpandMedicaid } from "../constants/states";
 import { flatten } from "lodash";
 
 const rootReducer = combineReducers({
@@ -39,7 +39,7 @@ export function decorateFieldsWithState(fields, taxpayerReturn, ui) {
 function getSelectedStateObjects(state, transformation = x => x) {
   const selectedStates = state.taxpayerReturn.residenceHistory;
 
-  const taxYearNonExpansionStates = statesThatDidNotExpandMedicare[state.taxpayerReturn.taxYear];
+  const taxYearNonExpansionStates = statesThatDidNotExpandMedicaid[state.taxpayerReturn.taxYear];
 
   const nonExpansion = selectedStates.filter(
     state =>

@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import states, { statesThatDidNotExpandMedicare } from "../../constants/states";
+import states, { statesThatDidNotExpandMedicaid } from "../../constants/states";
 
 const MeetsRequirementsResults = ({ residenceHistoryStateKeys }) => (
   <p className="qualification-status qualification-success">
@@ -36,12 +36,12 @@ export default props => {
 };
 
 function getStates(taxYear, residenceHistoryStateKeys) {
-  return statesThatDidNotExpandMedicare[taxYear].map((stateKey, i) => {
+  return statesThatDidNotExpandMedicaid[taxYear].map((stateKey, i) => {
     const stateName = states[stateKey];
     const isResidenceState =
       (residenceHistoryStateKeys || []).indexOf(stateKey) !== -1;
     const isFirst = i === 0;
-    const isLast = i === statesThatDidNotExpandMedicare[taxYear].length - 1;
+    const isLast = i === statesThatDidNotExpandMedicaid[taxYear].length - 1;
     const prefix = isLast ? ", or " : isFirst ? "" : ", ";
     return (
       <span
