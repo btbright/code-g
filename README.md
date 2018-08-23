@@ -9,7 +9,7 @@ The following IRS instructions were used to define Household Income, Modified Ad
 Form 8965, Health Coverage Exemptions; Form 8962, Premium Tax Credit
 
 ## How to report an issue
-We've worked hard to make sure the app provides accurate results in all cases but if you find an inaccurate result or bug, please let us know by opening an issue here on GitHub. We'll get it fixed as soon as we can. If you are a designed or developer, we'd also love pull requests or suggestions on how to improve the app.
+We've worked hard to make sure the app provides accurate results in all cases but if you find an inaccurate result or bug, please let us know by opening an issue here on GitHub or filling out [this feedback form](https://docs.google.com/forms/d/e/1FAIpQLScYX1a9kM2IyEwmsP6ycWzWRi9A3P2sTmDLm_XeuDxwX6F4xQ/viewform). We'll get it fixed as soon as we can. If you are a designer or developer, we'd also love pull requests or suggestions on how to improve the app.
 
 ## Privacy
 No data entered into the wizard is saved in any way. The tool is hosted on [github pages](https://pages.github.com/) and does not communicate with any server after the resources needed are downloaded to the browser.
